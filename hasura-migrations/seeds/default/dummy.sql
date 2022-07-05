@@ -1,17 +1,3 @@
---Boards_Admins
-INSERT INTO "public"."Board_Admins" ("board_id", "user_id")
-
-SELECT 
-  ("board") AS "board_id",
-  ("board") AS "user_id"
-  
-FROM generate_series(1, 100) AS "board"
-
-ON CONFLICT ON CONSTRAINT "board_admins_pkey"
-DO UPDATE SET
-  "board_id" = EXCLUDED."board_id",
-  "user_id" = EXCLUDED."user_id";
-
 --Boards
 INSERT INTO "public"."Boards" ("board_id", "name")
 
@@ -44,28 +30,21 @@ DO UPDATE SET
   "name" = EXCLUDED."name",
   "settings" = EXCLUDED."settings";
 
---Answer
-INSERT INTO "public"."Answers" ("user_id", "survey_id", "question_id", "created_at", "updated_at", "score", "notes")
+
+--Boards_Admins
+INSERT INTO "public"."Board_Admins" ("board_id", "user_id")
 
 SELECT 
-  (floor(random() * (100 - 1 +1) +1)) AS "user_id",
-  (floor(random() * (100 - 1 +1) +1)) AS "survey_id",
-  (floor(random() * (100 - 1 +1) +1)) AS "question_id",
-  now() - '30d'::INTERVAL * random() AS "created_at",
-  now() - '30d'::INTERVAL * random() AS "updated_at",
-  '1' AS "score",
-  CONCAT('answer', "answer") AS "notes"
- 
+  ("board") AS "board_id",
+  ("board") AS "user_id"
+  
+FROM generate_series(1, 100) AS "board"
 
-FROM generate_series(1, 100) AS "answer"
+ON CONFLICT ON CONSTRAINT "board_admins_pkey"
+DO UPDATE SET
+  "board_id" = EXCLUDED."board_id",
+  "user_id" = EXCLUDED."user_id";
 
-ON CONFLICT ON CONSTRAINT "answers_pkey"
-DO UPDATE SET  "user_id" = EXCLUDED."user_id",
-  "question_id" = EXCLUDED."question_id",
-  "created_at" = EXCLUDED."created_at",
-  "updated_at" = EXCLUDED."updated_at",
-  "score" = EXCLUDED."score",
-  "notes" = EXCLUDED."notes";
 
 --Questions
 INSERT INTO "public"."Questions" ("board_id", "type", "data", "etag", "is_deleted")
@@ -104,6 +83,29 @@ DO UPDATE SET
   "board_id" = EXCLUDED."board_id",
 "open_since" = EXCLUDED."open_since",
 "open_until" = EXCLUDED."open_until";
+
+--Answer
+INSERT INTO "public"."Answers" ("user_id", "survey_id", "question_id", "created_at", "updated_at", "score", "notes")
+
+SELECT 
+  (floor(random() * (100 - 1 +1) +1)) AS "user_id",
+  (floor(random() * (100 - 1 +1) +1)) AS "survey_id",
+  (floor(random() * (100 - 1 +1) +1)) AS "question_id",
+  now() - '30d'::INTERVAL * random() AS "created_at",
+  now() - '30d'::INTERVAL * random() AS "updated_at",
+  '1' AS "score",
+  CONCAT('answer', "answer") AS "notes"
+ 
+
+FROM generate_series(1, 100) AS "answer"
+
+ON CONFLICT ON CONSTRAINT "answers_pkey"
+DO UPDATE SET  "user_id" = EXCLUDED."user_id",
+  "question_id" = EXCLUDED."question_id",
+  "created_at" = EXCLUDED."created_at",
+  "updated_at" = EXCLUDED."updated_at",
+  "score" = EXCLUDED."score",
+  "notes" = EXCLUDED."notes";
 
 -- Invites
 INSERT INTO "public"."Invites" ("user_id", "survey_id")

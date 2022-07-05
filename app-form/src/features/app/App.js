@@ -1,6 +1,9 @@
 import { useQuery, gql } from "../../services/hasura-client";
 import Page from "../../components/Page";
 import { Logout } from "./Logout";
+import Mysurvey from "../../components/surveyTypes/surveytypeone";
+
+
 
 const PING_ACTION_QUERY = gql`
   query {
@@ -18,6 +21,7 @@ export const App = () => {
       {isSuccess
         ? `Computer says: ${new Date(data.ping.timestamp)}`
         : "loading time..."}
+        <Mysurvey />
     </Page>
   );
 };
