@@ -20,3 +20,5 @@ Day 2.
 13:00 After making sure that the tables were crated right we also created the seeds.
 
 16:20 Pushed the changes of the tables and the seeds in git.
+
+9:05 Made Some changes on seeds and creating view with react

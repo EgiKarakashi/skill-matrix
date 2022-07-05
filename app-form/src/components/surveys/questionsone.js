@@ -16,12 +16,6 @@ const json = {
 
         },
         {
-            name: "color",
-            type: "text",
-            inputType: "color",
-            title: "Your color:"
-        },
-        {
             name: "email",
             type: "text",
             inputType: "email",
