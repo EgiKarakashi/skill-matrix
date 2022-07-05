@@ -6,9 +6,8 @@ CREATE TABLE IF NOT EXISTS "public"."Answers" (
  "created_at" TIMESTAMPTZ DEFAULT NOW() NOT NULL,
  "updated_at" TIMESTAMPTZ DEFAULT NOW() NOT NULL,
  "score" INT CHECK (score BETWEEN 0 AND 100),
- "notes" TEXT NOT NULL
- 
- 
+ "notes" TEXT NOT NULL,
+ CONSTRAINT "answers_pkey" PRIMARY KEY ("answer_id")
 );
 
 ALTER TABLE ONLY "public"."Answers" 

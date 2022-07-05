@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS "public"."Board_Admins" (
  "board_id" INT NOT NULL,
- "user_id" INT NOT NULL
+ "user_id" INT NOT NULL,
+ CONSTRAINT "board_admins_pkey" PRIMARY KEY ("board_id", "user_id")
 );
 
 ALTER TABLE ONLY "public"."Board_Admins" 
