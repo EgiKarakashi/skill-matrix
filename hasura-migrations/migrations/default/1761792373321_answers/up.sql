@@ -46,9 +46,9 @@ FOREIGN KEY (question_id) REFERENCES "Questions"(question_id)
 ON UPDATE CASCADE ON DELETE CASCADE NOT DEFERRABLE;
 
 CREATE TRIGGER "set_public_answers_updated_at"
-BEFORE UPDATE ON "public"."answers"
+BEFORE UPDATE ON "public"."Answers"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updated_at"();
 
-COMMENT ON TRIGGER "set_public_answers_updated_at" ON "public"."answers" 
+COMMENT ON TRIGGER "set_public_answers_updated_at" ON "public"."Answers" 
 IS 'Trigger to set value of column "updated_at" to current timestamp on row update';
