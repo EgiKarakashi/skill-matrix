@@ -1,6 +1,6 @@
 Day 1. 
-First we discussed with eachother we decided to collect some information, to set some main goals and plan the visual contect of the surveys. 
-After finihsing all this we started setting up the database. Down below we have explained how the first day actually went and what each one of us did. 
+First we discussed with each other we decided to collect some information, to set some main goals and plan the visual contect of the surveys. 
+After finishing all this we started setting up the database. Down below we have explained how the first day actually went and what each one of us did. 
 Firs of all at
 
 13:00 Forked the repository, added collaborators and opened the project from GitPod
