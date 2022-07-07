@@ -13,6 +13,15 @@
 
      - Created tables,commited and pushed to GitHub
 
+  
+  -Admir's diary
+
+    - As a group we worked together to create an logicat idea about the requiremnets
+    
+    - Pulled the repository, created tables and pushed my changes 
+
+
+
 ###################################################################################################################################################################
 
 # Day 2.
@@ -28,6 +37,14 @@
      - Added Hasura metada migration.
     
      - Created the seeds
+
+
+
+ -Admir's diary
+     
+     -  Made Some changes on seeds and created first view with react
+
+     -  Pushed the changes of the tables and the seeds in git.
 
      
 
@@ -45,6 +62,12 @@
 
     - Started working in frontend to display the start page component.
 
+  -Admir's diary
+
+    - Updated the database with the new changes.
+
+    - I tried to create some actions (to fetch the data and show them in frontend after) but we couldnt find an solution, we talked with the other groups and decided to get the questions and answers from hasura by using Rest Endpoints.
+
  
 ####################################################################################################################################################################
 
@@ -61,3 +84,8 @@
     - Faced some problems with the metadata not working so i exported the metadata again and pushed the changes in git
 
     - Started working in frontend to display the start page component. Managed to connect the Hasura endpoints and get the data from the Answers and Questions tables.
+
+  -Admir's diary
+
+    - Changed premissions roles on Hasura
+    - Created questions and answers and I created two Rest Enpoints, after that Egi managed to show them in frontend.  
