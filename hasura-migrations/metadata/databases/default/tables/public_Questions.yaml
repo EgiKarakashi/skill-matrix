@@ -13,10 +13,3 @@ array_relationships:
         table:
           name: Answers
           schema: public
-  - name: Survey_Questions
-    using:
-      foreign_key_constraint_on:
-        column: question_id
-        table:
-          name: Survey_Questions
-          schema: public

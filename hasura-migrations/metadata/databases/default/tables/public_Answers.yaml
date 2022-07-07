@@ -2,6 +2,9 @@ table:
   name: Answers
   schema: public
 object_relationships:
+  - name: Board
+    using:
+      foreign_key_constraint_on: board_id
   - name: Question
     using:
       foreign_key_constraint_on: question_id

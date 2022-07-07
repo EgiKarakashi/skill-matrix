@@ -16,10 +16,3 @@ array_relationships:
         table:
           name: Board_Admins
           schema: public
-  - name: Invites
-    using:
-      foreign_key_constraint_on:
-        column: user_id
-        table:
-          name: Invites
-          schema: public
