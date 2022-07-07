@@ -1,25 +1,41 @@
-Day 1. 
-First we discussed with each other we decided to collect some information, to set some main goals and plan the visual contect of the surveys. 
-After finishing all this we started setting up the database. Down below we have explained how the first day actually went and what each one of us did. 
-Firs of all at
+# Day 1.
+    * Skill-Matrix is a project where the main goal is to collect data from the survey.This survey will contain many questions for a large amount of users in   different timestamps. 
+      * First we discussed with each other we decided to collect some information, to set some main goals and plan the visual contect of the surveys. 
+    - After finishing all this we started setting up the database. Down below we have explained how the first day actually went and what each one of us did. 
 
-13:00 Forked the repository, added collaborators and opened the project from GitPod
+ -Sindi's diary
+     
+     - Pulled the repo and created the migrations for other tables, after creating them I pushed my changes on GitHub.
+###################################################################################################################################################################
 
-16:40 Created tables,commited and pushed to GitHub
+# Day 2.
 
-16:55 Pulled the repository,created the other tables and pushed my changes 
+ -Sindi's diary
 
-17:05 Pulled the repo and created the migrations for other tables, after creating them I pushed my changes on GitHub.
+     - Checking the changes that were made by my team mates than fixed my tables. 
 
-Day 2.
+     - Pushed the changes of the tables in git.
 
-9:00 Added Hasura metada migration.
+     
 
-10:30 Checking the changes that were made to the projects than started making the changes that were needed to fix our tables. 
+####################################################################################################################################################################
 
-13:00 After making sure that the tables were crated right we also created the seeds.
+# Day 3.
 
-16:20 Pushed the changes of the tables and the seeds in git.
+ -Sindi's diary
 
-9:05 Made Some changes on seeds and creating view with react
+    - Updated the seeds again because my team mates made some changes to the tables, exported the  metadata and pushed the changes in git.
+
+    - After facing some problems in backend decided to turn to Youtube, react docs, hasura docs, stackoverflow etc to be able to improve my skills and face errors better next.
+
+ 
+####################################################################################################################################################################
+
+# Day 4.
+
+  -Sindi's diary   
+     
+     -Tried to built the endpoints,fetched data from the database .
+
+     -Worked with Egi to display the starting page where we faced some errors but our senior colleague Enea helped us.
 
