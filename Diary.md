@@ -66,7 +66,7 @@
 
     - Updated the database with the new changes.
 
-    - I tried to create some actions (to fetch the data and show them in frontend after) but we couldnt find an solution, we talked with the other groups and decided to get the questions and answers from hasura by using Rest Endpoints.
+    - I tried to create some actions (to fetch the data and show them in frontend after) but we couldnt find an solution because we faced a problem related to "webhook", we talked with the other groups and Rezart for this propblem and we decided to use Rest Endpoints to get the data from Hasura tables.
 
  
 ####################################################################################################################################################################
@@ -88,4 +88,5 @@
   -Admir's diary
 
     - Changed premissions roles on Hasura
-    - Created questions and answers and I created two Rest Enpoints, after that Egi managed to show them in frontend.  
+    
+    - Inserted data to questions and answers tables and I created two Rest Enpoints from them, after that Egi managed to show the Questions and Answers in the front end.
