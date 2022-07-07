@@ -16,3 +16,28 @@ array_relationships:
         table:
           name: Board_Admins
           schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - user_id
+        - name
+      filter: {}
+  - role: backend
+    permission:
+      columns:
+        - user_id
+        - name
+      filter: {}
+  - role: backoffice
+    permission:
+      columns:
+        - user_id
+        - name
+      filter: {}
+  - role: form
+    permission:
+      columns:
+        - user_id
+        - name
+      filter: {}

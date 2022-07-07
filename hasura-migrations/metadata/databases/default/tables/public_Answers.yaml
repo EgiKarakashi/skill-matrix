@@ -14,3 +14,64 @@ object_relationships:
   - name: User
     using:
       foreign_key_constraint_on: user_id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - answer_id
+        - board_id
+        - question_id
+        - score
+        - survey_id
+        - user_id
+        - data
+        - notes
+        - created_at
+        - question_etag
+        - updated_at
+      filter: {}
+  - role: backend
+    permission:
+      columns:
+        - answer_id
+        - board_id
+        - question_id
+        - score
+        - survey_id
+        - user_id
+        - data
+        - notes
+        - created_at
+        - question_etag
+        - updated_at
+      filter: {}
+  - role: backoffice
+    permission:
+      columns:
+        - answer_id
+        - board_id
+        - question_id
+        - score
+        - survey_id
+        - user_id
+        - data
+        - notes
+        - created_at
+        - question_etag
+        - updated_at
+      filter: {}
+  - role: form
+    permission:
+      columns:
+        - answer_id
+        - board_id
+        - question_id
+        - score
+        - survey_id
+        - user_id
+        - data
+        - notes
+        - created_at
+        - question_etag
+        - updated_at
+      filter: {}

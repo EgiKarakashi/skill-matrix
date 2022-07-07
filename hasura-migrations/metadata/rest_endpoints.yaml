@@ -1,1 +1,9 @@
-[]
+- comment: null
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: answers
+  methods:
+    - GET
+  name: answers
+  url: answers

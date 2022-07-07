@@ -1,1 +1,11 @@
-[]
+- name: allowed-queries
+  definition:
+    queries:
+      - name: answers
+        query: |
+          query MyQuery {
+          	Answers {
+          		answer_id
+          		data
+          	}
+          }

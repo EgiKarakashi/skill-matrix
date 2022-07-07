@@ -9,3 +9,44 @@ array_relationships:
         table:
           name: Answers
           schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - board_id
+        - survey_id
+        - created_at
+        - open_since
+        - open_until
+        - updated_at
+      filter: {}
+  - role: backend
+    permission:
+      columns:
+        - board_id
+        - survey_id
+        - created_at
+        - open_since
+        - open_until
+        - updated_at
+      filter: {}
+  - role: backoffice
+    permission:
+      columns:
+        - board_id
+        - survey_id
+        - created_at
+        - open_since
+        - open_until
+        - updated_at
+      filter: {}
+  - role: form
+    permission:
+      columns:
+        - board_id
+        - survey_id
+        - created_at
+        - open_since
+        - open_until
+        - updated_at
+      filter: {}
