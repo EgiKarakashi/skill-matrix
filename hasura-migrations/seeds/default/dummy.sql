@@ -1,4 +1,10 @@
 
+ 
+
+
+
+/*
+
  --Boards
 INSERT INTO "public"."Boards" ("board_id", "name")
 
@@ -13,7 +19,8 @@ ON CONFLICT ON CONSTRAINT "boards_pkey"
 DO UPDATE SET
   "board_id" = EXCLUDED."board_id",
   "name" = EXCLUDED."name";
- 
+
+
 
  --Users
 INSERT INTO "public"."Users" ("user_id", "name")
@@ -27,6 +34,8 @@ ON CONFLICT ON CONSTRAINT "users_pkey"
 DO UPDATE SET
   "user_id" = EXCLUDED."user_id",
   "name" = EXCLUDED."name";  
+
+
 
 
  --Boards_Admins
@@ -44,8 +53,7 @@ DO UPDATE SET
   "user_id" = EXCLUDED."user_id"; 
 
 
-
- --Questions
+  --Questions
 INSERT INTO "public"."Questions" ("board_id", "type", "data", "etag", "is_deleted")
 
 SELECT 
@@ -66,7 +74,8 @@ DO UPDATE SET
 "type" = EXCLUDED."type",
 "is_deleted" = EXCLUDED."is_deleted",
 "data" = EXCLUDED."data";
-  
+
+
  --Surveys
  INSERT INTO "public"."Survey" ("board_id", "created_at","updated_at","open_since" , "open_until")
 
@@ -87,7 +96,6 @@ DO UPDATE SET
 "open_since" = EXCLUDED."open_since",
 "open_until" = EXCLUDED."open_until";
  
-
 --Answer
 INSERT INTO "public"."Answers" ("user_id", "board_id", "question_id", "question_etag","survey_id","created_at", "updated_at", "score", "notes", "data")
 
@@ -119,3 +127,45 @@ DO UPDATE SET
  "score" = EXCLUDED."score",
  "notes" = EXCLUDED."notes",
  "data" = EXCLUDED."data"; 
+
+
+
+
+
+
+
+
+ INSERT INTO "public"."Boards"("board_id", "name")
+VALUES (1, 'Board-1'),
+(2, 'Board-2'),
+(3, 'Board-3');
+
+
+INSERT INTO "public"."Questions"("board_id", "type", "data", "etag", "is_deleted")
+VALUES (1, 'type-a', '{"Question" : "Do you agree with 1"}', Now(), FALSE),
+(2, 'type-a', '{"Question" : "Do you agree with 2"}', Now(), FALSE),
+(3, 'type-a', '{"Question" : "Do you agree with 3"}', Now(), FALSE);
+
+
+
+INSERT INTO "public"."Users"("user_id","name")
+VALUES (1, 'Sindi'),
+(2, 'Egi'),
+(3, 'Admir');
+
+ INSERT INTO "public"."Survey" ("board_id", "created_at","updated_at","open_since" , "open_until")
+VALUES (1, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() + '7d'::INTERVAL * random() );
+
+ 
+
+
+ INSERT INTO "public"."Board_Admins"("board_id","user_id")
+VALUES (1, 1),
+(2, 1),
+(3, 2);
+
+
+INSERT INTO "public"."Answers" ("user_id", "board_id", "question_id", "question_etag","survey_id","created_at", "updated_at", "score", "notes", "data")
+VALUES(1, 1, 118, now() - '30d'::INTERVAL * random(), 701, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '1', CONCAT('answer', "answer"), {'{"FoodType":"veg","pref":"High"}'}  )
+
+*/

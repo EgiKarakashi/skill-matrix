@@ -7,3 +7,12 @@
     - GET
   name: answers
   url: answers
+- comment: null
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: get-question
+  methods:
+    - GET
+  name: get-question
+  url: get-question

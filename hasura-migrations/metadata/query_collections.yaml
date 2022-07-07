@@ -9,3 +9,11 @@
           		data
           	}
           }
+      - name: get-question
+        query: |
+          query MyQuery {
+          	Questions {
+          		board_id
+          		data
+          	}
+          }
