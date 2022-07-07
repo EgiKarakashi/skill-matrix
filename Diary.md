@@ -6,6 +6,13 @@
  -Sindi's diary
      
      - Pulled the repo and created the migrations for other tables, after creating them I pushed my changes on GitHub.
+
+  -Egi's diary      
+
+     - Forked the repository, added collaborators and opened the project from GitPod
+
+     - Created tables,commited and pushed to GitHub
+
 ###################################################################################################################################################################
 
 # Day 2.
@@ -15,6 +22,12 @@
      - Checking the changes that were made by my team mates than fixed my tables. 
 
      - Pushed the changes of the tables in git.
+
+-Egi's diary
+
+     - Added Hasura metada migration.
+    
+     - Created the seeds
 
      
 
@@ -28,6 +41,10 @@
 
     - After facing some problems in backend decided to turn to Youtube, react docs, hasura docs, stackoverflow etc to be able to improve my skills and face errors better next.
 
+  -Egi's diary
+
+    - Started working in frontend to display the start page component.
+
  
 ####################################################################################################################################################################
 
@@ -39,3 +56,8 @@
 
      -Worked with Egi to display the starting page where we faced some errors but our senior colleague Enea helped us.
 
+  -Egi's diary
+
+    - Faced some problems with the metadata not working so i exported the metadata again and pushed the changes in git
+
+    - Started working in frontend to display the start page component. Managed to connect the Hasura endpoints and get the data from the Answers and Questions tables.
