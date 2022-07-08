@@ -118,10 +118,12 @@
 
 -Admir's diary
 
-    -Within the changes that were made in the database i had to update the view
 
-    -Also created some new endpoints to move forward with other steps of the project, Rest Endpoints worked to print only one question in frontend but we faced
-      some problems while we were trying to print an array with questions and answers, by communicating with the others we created queries to get all the questions and its answers from hasura:
+    -Within the changes that were made in the database i had to update the view, today our main
+    goal was to get all questions and aswers from hasura and to post them in different pages in front end.
+
+    -Started by creating some new endpoints to move forward with other steps of the project, Rest Endpoints worked to print only one question in frontend but we faced
+    some problems while we were trying to get and show an array with questions and answers, by communicating with the others we created queries to get all the questions and its answers from hasura:
 
       query MyQuery {
       Questions {
@@ -132,6 +134,8 @@
           }
         }
       }
+    
+    -We tried to construct the Query's so we could get only the data that we wanted to show on front end and it was a little bit challenging. 
 
     -We were able to get all the questions and answers but we faced some problems trying to show in frontend one question with its answers per page.
 
