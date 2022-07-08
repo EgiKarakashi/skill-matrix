@@ -169,3 +169,8 @@ INSERT INTO "public"."Answers" ("user_id", "board_id", "question_id", "question_
 VALUES(1, 1, 118, now() - '30d'::INTERVAL * random(), 701, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '1', CONCAT('answer', "answer"), {'{"FoodType":"veg","pref":"High"}'}  )
 
 */
+
+
+
+
+
