@@ -121,3 +121,25 @@
     - Asked help from the mentors and worked with other groups=, managed to solve some of the issues faced but still other issues are pending.
 
     - Will check online on how to implement the fixes.
+
+
+    -Admir's diary
+
+    -Within the changes that were made in the database i had to update the view 
+   
+    -Also created some new endpoints to move forward with other steps of the project, Rest Endpoints worked to print only one question in frontend but we faced 
+	  some problems while we were trying to print an array with questions and answers, by communicating with the others we created queries to get all the questions and its answers from hasura:
+
+	  query MyQuery {
+      Questions {
+      data
+      question_id
+      Answers {
+      data
+          }
+        }
+      }
+
+   -We were able to get all the questions and answers but we faced some problems trying to show in frontend one question with its answers per page. 
+
+  - We communicated with our mentors and we are going to try to change the way how queries are structured so we dont have to do multiple mappings to show the data in frontend.
