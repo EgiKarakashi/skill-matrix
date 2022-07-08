@@ -16,3 +16,12 @@
     - GET
   name: get-question
   url: get-question
+- comment: null
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: survey-openuntil
+  methods:
+    - GET
+  name: survey-openuntil
+  url: survey-openuntil

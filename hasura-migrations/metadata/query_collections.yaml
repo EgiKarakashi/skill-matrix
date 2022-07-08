@@ -17,3 +17,11 @@
           		data
           	}
           }
+      - name: survey-openuntil
+        query: |
+          query MyQuery {
+          	Survey {
+          		open_until
+          		board_id
+          	}
+          }
