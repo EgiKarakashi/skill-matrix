@@ -109,3 +109,15 @@
     -Together with Admir we noticed that we had forgoten to export the metadata and the tables were untracked.
 
     -After doing all the needed changes the db was working again and the changes were pushed in github.
+
+  -Egi's diary
+
+    - Today mainly worked on the frontend and used React Query to get the data from both Questions and the Answers tables. 
+
+    - Faced issues with the display of the data because the data from the query arrives in an array with multiple objects inside that have other arrays inside them.
+
+    - Used info from the Stackover Flow on how to manage the issues but still faced issues do to the requirement of multiple mapping on objects and arrays.
+
+    - Asked help from the mentors and worked with other groups=, managed to solve some of the issues faced but still other issues are pending.
+
+    - Will check online on how to implement the fixes.
