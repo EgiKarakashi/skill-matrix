@@ -90,3 +90,22 @@
     - Changed premissions roles on Hasura
     
     - Inserted data to questions and answers tables and I created two Rest Enpoints from them, after that Egi managed to show the Questions and Answers in the front end.
+
+    ####################################################################################################################################################################
+
+# Day 5.
+
+   *We started the day motivated and with new energy,but things didn't go as planned. We faced some errors while working on the frontend part and had some diffieculties fixing them. We had to make some changes to the database too. Even there we faced some errors but those were handled  talking with each other.
+
+
+  -Sindi's diary   
+    
+    -I made some changes to the database again because we had some new ideas on progressing with the work .
+
+    -With the changes that were made to the db i also Created a new table and a view. 
+
+    -After moving on with the work i noticed that the database wasen't working properly (Hasura wasn't showing all the tables) so i had to fix it again.
+
+    -Together with Admir we noticed that we had forgoten to export the metadata and the tables were untracked.
+
+    -After doing all the needed changes the db was working again and the changes were pushed in github.
