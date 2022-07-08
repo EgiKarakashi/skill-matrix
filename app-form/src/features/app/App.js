@@ -4,6 +4,8 @@ import { Logout } from "./Logout";
 import { Routes, Route } from 'react-router-dom'; 
 import WelcomePage from "../../components/WelcomePage/WelcomePage";
 import Question from "../../components/Question/Question";
+import QuestionPage from "../../components/QuestionPage/QuestionPage";
+import QuestionPages from "../../components/QuestionPage/QuestionPages";
 
 
 
@@ -27,7 +29,7 @@ export const App = () => {
     </Page>} />
       <Route path="/fill" element={<Page withPadding title={"Form App"} actions={<Logout />}>
       {isSuccess
-        ? <Question />
+        ? <QuestionPages />
         : "loading time..."}
     </Page>} />
     </Routes>

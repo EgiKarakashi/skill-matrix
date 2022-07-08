@@ -11,12 +11,19 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Question = (props) => {
+<<<<<<< HEAD
   const [questions, setQuestions] = useState({});
   const [answers, setAnswers] = useState({});
   const [value, setValue] = React.useState(true);
+=======
+    // const [questions, setQuestions] = useState({});
+    // const [answers, setAnswers] = useState({});
+    const [value, setValue] = React.useState(true);
+>>>>>>> f91e54b (day-5-working-on-frontend)
 
   const history = useNavigate();
 
+<<<<<<< HEAD
   useEffect(() => {
     axios
       .get(
@@ -27,6 +34,15 @@ const Question = (props) => {
         setAnswers(res.data.Answers[0].data);
       });
   }, []);
+=======
+    // useEffect(() => {
+    //     axios.get('https://8080-egikarakash-skillmatrix-486iduh3y8n.ws-eu51.gitpod.io/api/rest/answers')
+    //     .then(res => {
+    //         //console.log("res-data", res.data.Answers[0].data);
+    //         setAnswers(res.data.Answers[0].data);
+    //     });
+    // }, []);
+>>>>>>> f91e54b (day-5-working-on-frontend)
 
   useEffect(() => {
     axios
@@ -47,6 +63,7 @@ const Question = (props) => {
     setValue(event.target.value);
   };
 
+<<<<<<< HEAD
   return (
     <div className={classes.question}>
       <Typography variant="h6" component="div" gutterBottom>
@@ -84,3 +101,55 @@ const Question = (props) => {
 };
 
 export default Question;
+=======
+    // useEffect(() => {
+    //     axios.get('https://8080-egikarakash-skillmatrix-486iduh3y8n.ws-eu51.gitpod.io/api/rest/get-question')
+    //     .then(res => {
+    //         console.log("res-dataQ", res.data.Questions[0].data);
+    //         setQuestions(res.data.Questions[0].data);
+    //     });
+    // }, []);
+
+
+    const handleClick = () => {
+        history('/:id');
+    }
+            
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+
+        
+
+    return (
+        <div className={classes.question}>
+           <Typography variant="h6" component="div" gutterBottom>
+                {props.question}
+            </Typography>
+            <FormControl>
+                <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female"
+                    name="radio-buttons-group"
+                    value={props.value}
+                    onChange={handleChange}
+                >
+                    {/* {Object.keys(answers).map(function(key, index) {
+                        // console.log("key:", key, "-", Object.values(answers)[index]);
+                        // console.log("index: ",  (index + 1));
+                        return <FormControlLabel key={key} value={Object.values(answers)[index]} control={<Radio />} label={key} />
+                    })} */}
+                    <FormControlLabel key={props.key} value={props.value} control={<Radio />} label={props.label} />
+
+                </RadioGroup>
+            </FormControl>
+            <div style={{marginTop: "20px"}}>
+                <Button onClick={handleClick} variant="contained">Next Question</Button>
+            </div>
+        </div>
+    )
+}
+
+export default Question;
+>>>>>>> f91e54b (day-5-working-on-frontend)
