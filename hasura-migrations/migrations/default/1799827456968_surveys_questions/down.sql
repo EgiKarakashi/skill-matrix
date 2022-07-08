@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS "public"."Surveys_Questions" CASCADE;
+DROP VIEW IF EXISTS "public"."surveys_questions" CASCADE;
