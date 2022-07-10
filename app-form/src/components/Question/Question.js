@@ -25,7 +25,8 @@ const Question = (props) => {
   //Score ....
   const [value, setValue] = useState(2);
   //Selected Button ...
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState([]);
+  console.log([selectedValue]);
   console.log("Question Index...", props?.questions?.data?.Questions?.length);
 
   const handleNext = () => {
@@ -37,7 +38,10 @@ const Question = (props) => {
   };
 
   const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+    const value = event.target.value;
+    setSelectedValue(
+      typeof value === "String" || value === "Int" ? value.split(",") : value
+    );
   };
 
   const handlePrevious = () => {
@@ -54,16 +58,15 @@ const Question = (props) => {
   };
 
   return (
-    <Box width={"400px"}  >
-      <Card  style={cardStyle}  >
-        
+    <Box width={"400px"}>
+      <Card style={cardStyle}>
         <CardMedia
           component="img"
           height="100"
           image="https://source.unsplash.com/random"
           alt="unsplash image"
         />
-        
+
         <CardContent>
           <Container>
             <Typography gutterBottom variant="h5" component="div">
@@ -129,6 +132,7 @@ const Question = (props) => {
                                   alignItems: "flex-start",
                                   justifyContent: "center"
                                 }}
+                                onChange={handleChange}
                               >
                                 <FormControlLabel
                                   value={
