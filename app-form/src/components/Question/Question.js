@@ -8,7 +8,11 @@ import {
   FormControl,
   FormLabel,
   Typography,
-  Slider
+  Stack,
+  Slider,
+  Card,
+  CardMedia,
+  CardContent
 } from "@mui/material";
 import React, { useState } from "react";
 
@@ -34,8 +38,7 @@ const Question = (props) => {
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
-  }
-
+  };
 
   const handlePrevious = () => {
     if (index >= 0) {
@@ -44,141 +47,197 @@ const Question = (props) => {
     }
   };
 
-  return (
-    <Container>
-      {props?.questions?.isSuccess ? (
-        <div>
-          <FormControl style={{ display: "flex" }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              <Box
-                style={{ display: "flex", justifyContent: "center" }}
-                sx={{ mt: 30 }}
-              >
-                <h1
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-                    paddingBottom: 45
-                  }}
-                >
-                  {props?.questions?.data?.Questions?.[index]?.data?.question}
-                </h1>
-              </Box>
-            </FormLabel>
+  const cardStyle = {
+    display: "block",
+    transitionDuration: "0.3s",
+    height: "45vw"
+  };
 
-            <div>
-              {(() => {
-                if (
-                  props?.questions?.data?.Questions?.[index].type === "type-a"
-                ) {
-                  return (
-                    <div>
+  return (
+    <Box width={"400px"}  >
+      <Card  style={cardStyle}  >
+        
+        <CardMedia
+          component="img"
+          height="100"
+          image="https://source.unsplash.com/random"
+          alt="unsplash image"
+        />
+        
+        <CardContent>
+          <Container>
+            <Typography gutterBottom variant="h5" component="div">
+              {props?.questions?.isSuccess ? (
+                <div>
+                  <FormControl style={{ display: "flex" }}>
+                    <FormLabel id="demo-row-radio-buttons-group-label">
                       <Box
                         style={{ display: "flex", justifyContent: "center" }}
-                        sx={{ "& > legend": { mt: 2 } }}
+                        sx={{ mt: 0 }}
                       >
-                        <Typography component="legend"></Typography>
-                        <Slider
-                            getAriaLabel={() => 'Temperature range'}
-                            value={value}
-                            onChange={handleChange}
-                            valueLabelDisplay="auto"
-                            getAriaValueText={valuetext}
-                          />
+                        <h1
+                          style={{
+                            color: "black",
+                            textAlign: "center",
+                            paddingBottom: 45
+                          }}
+                        >
+                          {
+                            props?.questions?.data?.Questions?.[index]?.data
+                              ?.question
+                          }
+                        </h1>
                       </Box>
-                    </div>
-                  );
-                } else if (
-                  props?.questions?.data?.Questions?.[index].type === "type-b"
-                ) {
-                  return (
+                    </FormLabel>
+
                     <div>
-                      <RadioGroup
-                        style={{
-                          display: "flex",
-                          alignContent: "center",
-                          alignItems: "flex-start",
-                          justifyContent: "center"
-                        }}
-                      >
-                        <FormControlLabel
-                          value={
-                            props?.questions?.data?.Answers?.[index]?.data[0]
-                          }
-                          control={<Radio />}
-                          label={
-                            props?.questions?.data?.Answers?.[index]?.data[0]
-                          }
-                        />
-                        <FormControlLabel
-                          value={
-                            props?.questions?.data?.Answers?.[index]?.data[1]
-                          }
-                          control={<Radio />}
-                          label={
-                            props?.questions?.data?.Answers?.[index]?.data[1]
-                          }
-                        />
-                        <FormControlLabel
-                          value={
-                            props?.questions?.data?.Answers?.[index]?.data[2]
-                          }
-                          control={<Radio />}
-                          label={
-                            props?.questions?.data?.Answers?.[index]?.data[2]
-                          }
-                        />
-                        <FormControlLabel
-                          value={
-                            props?.questions?.data?.Answers?.[index]?.data[3]
-                          }
-                          control={<Radio />}
-                          label={
-                            props?.questions?.data?.Answers?.[index]?.data[3]
-                          }
-                        />
-                        <FormControlLabel
-                          value={
-                            props?.questions?.data?.Answers?.[index]?.data[4]
-                          }
-                          control={<Radio />}
-                          label={
-                            props?.questions?.data?.Answers?.[index]?.data[4]
-                          }
-                        />
-                      </RadioGroup>
+                      {(() => {
+                        if (
+                          props?.questions?.data?.Questions?.[index].type ===
+                          "type-a"
+                        ) {
+                          return (
+                            <div>
+                              <Box
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "center"
+                                }}
+                                sx={{ "& > legend": { mt: 2 } }}
+                              >
+                                <Typography component="legend"></Typography>
+                                <Slider
+                                  getAriaLabel={() => "Temperature range"}
+                                  value={value}
+                                  onChange={handleChange}
+                                  valueLabelDisplay="auto"
+                                  getAriaValueText={valuetext}
+                                />
+                              </Box>
+                            </div>
+                          );
+                        } else if (
+                          props?.questions?.data?.Questions?.[index].type ===
+                          "type-b"
+                        ) {
+                          return (
+                            <div>
+                              <RadioGroup
+                                style={{
+                                  display: "flex",
+                                  alignContent: "center",
+                                  alignItems: "flex-start",
+                                  justifyContent: "center"
+                                }}
+                              >
+                                <FormControlLabel
+                                  value={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[0]
+                                  }
+                                  control={<Radio />}
+                                  label={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[0]
+                                  }
+                                />
+                                <FormControlLabel
+                                  value={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[1]
+                                  }
+                                  control={<Radio />}
+                                  label={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[1]
+                                  }
+                                />
+                                <FormControlLabel
+                                  value={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[2]
+                                  }
+                                  control={<Radio />}
+                                  label={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[2]
+                                  }
+                                />
+                                <FormControlLabel
+                                  value={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[3]
+                                  }
+                                  control={<Radio />}
+                                  label={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[3]
+                                  }
+                                />
+                                <FormControlLabel
+                                  value={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[4]
+                                  }
+                                  control={<Radio />}
+                                  label={
+                                    props?.questions?.data?.Answers?.[index]
+                                      ?.data[4]
+                                  }
+                                />
+                              </RadioGroup>
+                            </div>
+                          );
+                        } else {
+                          return (
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "center"
+                              }}
+                            >
+                              loading...
+                            </div>
+                          );
+                        }
+                      })()}
                     </div>
-                  );
-                } else {
-                  return <div style={{display: "flex", justifyContent: "center"}}>loading...</div>;
-                }
-              })()}
-            </div>
-          </FormControl>
-        </div>
-      ) : (
-        "loading time ..."
-      )}
-      <div
-        className="flex-btn"
-        style={{
-          paddingTop: 45,
-          display: "flex",
-          justifyContent: "space-evenly"
-        }}
-      >
-        <Button
-          variant="contained"
-          disabled={index === 0}
-          onClick={handlePrevious}
-        >
-          Previous
-        </Button>
-        <Button variant="contained" onClick={handleNext}>
-          Next
-        </Button>
-      </div>
-    </Container>
+                  </FormControl>
+                </div>
+              ) : (
+                "loading time ..."
+              )}
+              <div
+                className="flex-btn"
+                style={{
+                  paddingTop: 45,
+                  display: "flex",
+                  justifyContent: "space-evenly"
+                }}
+              >
+                <Stack spacing={2} direction="row">
+                  <Button
+                    variant="contained"
+                    disabled={index === 0}
+                    onClick={handlePrevious}
+                    disableRipple
+                  >
+                    Previous
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    disableRipple
+                  >
+                    Next
+                  </Button>
+                </Stack>
+              </div>
+            </Typography>
+          </Container>
+        </CardContent>
+      </Card>
+    </Box>
   );
 };
 

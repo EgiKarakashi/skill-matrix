@@ -9,6 +9,13 @@ array_relationships:
         table:
           name: Answers
           schema: public
+  - name: surveys_invites
+    using:
+      foreign_key_constraint_on:
+        column: survey_id
+        table:
+          name: surveys_invites
+          schema: public
 select_permissions:
   - role: anonymous
     permission:

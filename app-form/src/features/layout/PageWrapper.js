@@ -8,7 +8,7 @@ export const PageWrapper = (props) => (
       justifyContent: "center",
       alignItems: "flex-start",
       height: "100vh",
-      backgroundColor: "primary.light",
+      backgroundColor: "rgba(245, 198, 161, 0.8)",
       border: "1px solid white",
       borderColor: "primary.light",
       overflow: "scroll",

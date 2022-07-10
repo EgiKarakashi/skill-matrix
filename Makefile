@@ -90,6 +90,7 @@ migrate-redo:
 	@hasura migrate apply --project hasura-migrations --database-name $(project) --down $(steps)
 	@hasura migrate apply --project hasura-migrations --database-name $(project) --up $(steps)
 
+
 migrate-create:
 	@hasura migrate create \
 		"$(name)" \
