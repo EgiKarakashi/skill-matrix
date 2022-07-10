@@ -8,7 +8,6 @@ import {
   FormControl,
   FormLabel,
   Typography,
-  Rating,
   Slider
 } from "@mui/material";
 import React, { useState } from "react";
@@ -19,6 +18,10 @@ function valuetext(value) {
 
 const Question = (props) => {
   const [index, setIndex] = useState(0);
+  //Score ....
+  const [value, setValue] = useState(2);
+  //Selected Button ...
+  const [selectedValue, setSelectedValue] = useState("");
   console.log("Question Index...", props?.questions?.data?.Questions?.length);
 
   const handleNext = () => {
@@ -33,18 +36,13 @@ const Question = (props) => {
     setSelectedValue(event.target.value);
   }
 
+
   const handlePrevious = () => {
     if (index >= 0) {
       setIndex(index - 1);
       console.log("Index at handle prev...");
     }
   };
-
-  //Rating....
-  const [value, setValue] = useState(2);
-
-  //Radio image...
-  const [selectedValue, setSelectedValue] = useState("");
 
   return (
     <Container>
