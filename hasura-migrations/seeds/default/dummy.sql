@@ -131,20 +131,26 @@ DO UPDATE SET
 
 
 
-
-
-
-
- INSERT INTO "public"."Boards"("board_id", "name")
+INSERT INTO "public"."Boards"("board_id", "name")
 VALUES (1, 'Board-1'),
 (2, 'Board-2'),
 (3, 'Board-3');
 
 
-INSERT INTO "public"."Questions"("board_id", "type", "data", "etag", "is_deleted")
-VALUES (1, 'type-a', '{"Question" : "Do you agree with 1"}', Now(), FALSE),
-(2, 'type-a', '{"Question" : "Do you agree with 2"}', Now(), FALSE),
-(3, 'type-a', '{"Question" : "Do you agree with 3"}', Now(), FALSE);
+INSERT INTO "public"."Questions"("question_id","board_id", "type", "data", "etag", "is_deleted")
+VALUES (1, 1, 'type-a', '{"Question" : "React?"}', Now(), FALSE),
+(2, 2, 'type-b', '{"Question" : "Angularjs?"}', Now(), FALSE),
+(3, 3, 'type-c', '{"Question" : "Lumen"}', Now(), FALSE);
+(4, 1, 'type-a', '{"Question" : "Redux + Redux Toolkit"}', Now(), FALSE);
+(5, 2, 'type-b', '{"Question" : "React / styled-components"}', Now(), FALSE);
+(6, 3, 'type-c', '{"Question" : "React / Router"}', Now(), FALSE);
+(7, 1, 'type-a', '{"Question" : "Redux / Saga"}', Now(), FALSE);
+(8, 2, 'type-b', '{"Question" : "Webpack"}', Now(), FALSE);
+(9, 3, 'type-c', '{"Question" : "Rollup"}', Now(), FALSE);
+(10, 1, 'type-a', '{"Question" : "ESLint"}', Now(), FALSE);
+(11, 2, 'type-b', '{"Question" : "jQuery"}', Now(), FALSE);
+
+
 
 
 
@@ -153,22 +159,140 @@ VALUES (1, 'Sindi'),
 (2, 'Egi'),
 (3, 'Admir');
 
- INSERT INTO "public"."Survey" ("board_id", "created_at","updated_at","open_since" , "open_until")
-VALUES (1, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() + '7d'::INTERVAL * random() );
-
- 
+ INSERT INTO "public"."Survey" ("survey_id","board_id", "created_at","updated_at","open_since" , "open_until")
+VALUES (1,1, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() + '7d'::INTERVAL * random() );
 
 
  INSERT INTO "public"."Board_Admins"("board_id","user_id")
 VALUES (1, 1),
-(2, 1),
+(2, 3),
 (3, 2);
 
 
-INSERT INTO "public"."Answers" ("user_id", "board_id", "question_id", "question_etag","survey_id","created_at", "updated_at", "score", "notes", "data")
-VALUES(1, 1, 118, now() - '30d'::INTERVAL * random(), 701, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '1', CONCAT('answer', "answer"), {'{"FoodType":"veg","pref":"High"}'}  )
+INSERT INTO "public"."Answers" ("answer_id","survey_id","user_id", "board_id", "question_id", "question_etag","survey_id","created_at", "updated_at", "score", "notes", "data")
+VALUES(1,1,1, 1, 1, now() - '30d'::INTERVAL * random(), 701, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5', CONCAT('answer', "answer"), {'{"FoodType":"veg","pref":"High"}'}  )
+
+
+
+
+
+
+INSERT INTO "public"."Boards"("board_id", "name")
+VALUES (1, 'Board-1'),
+(2, 'Board-2'),
+(3, 'Board-3');
+
+
+INSERT INTO "public"."Questions"("question_id","board_id", "type", "data", "etag", "is_deleted")
+VALUES (1, 1, 'type-a', '{"Question" : "React?"}', Now(), FALSE),
+(2, 2, 'type-b', '{"Question" : "Angularjs?"}', Now(), FALSE),
+(3, 3, 'type-c', '{"Question" : "Lumen"}', Now(), FALSE),
+(4, 1, 'type-a', '{"Question" : "Redux + Redux Toolkit"}', Now(), FALSE),
+(5, 2, 'type-b', '{"Question" : "React / styled-components"}', Now(), FALSE),
+(6, 3, 'type-c', '{"Question" : "React / Router"}', Now(), FALSE),
+(7, 1, 'type-a', '{"Question" : "Redux / Saga"}', Now(), FALSE),
+(8, 2, 'type-b', '{"Question" : "Webpack"}', Now(), FALSE),
+(9, 3, 'type-c', '{"Question" : "Rollup"}', Now(), FALSE),
+(10, 1, 'type-a', '{"Question" : "ESLint"}', Now(), FALSE),
+(11, 2, 'type-b', '{"Question" : "jQuery"}', Now(), FALSE);
+
+INSERT INTO "public"."Users"("user_id","name")
+VALUES (1, 'Sindi'),
+(2, 'Egi'),
+(3, 'Admir');
+
+ INSERT INTO "public"."Survey" ("survey_id","board_id", "created_at","updated_at","open_since" , "open_until")
+VALUES (1,1, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() + '7d'::INTERVAL * random() );
+
+
+ INSERT INTO "public"."Board_Admins"("board_id","user_id")
+VALUES (1, 1),
+(2, 3),
+(3, 2);
 
 */
+
+
+
+
+INSERT INTO "public"."Users"("user_id","name")
+VALUES (1, 'Sindi'),
+(2, 'Egi'),
+(3, 'Admir');
+
+ INSERT INTO "public"."Survey" ("survey_id","board_id", "created_at","updated_at","open_since" , "open_until")
+VALUES (1,1, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() + '7d'::INTERVAL * random() );
+
+
+ INSERT INTO "public"."Board_Admins"("board_id","user_id")
+VALUES (1, 1),
+(2, 3),
+(3, 2);
+
+
+INSERT INTO "public"."Answers" ("answer_id","survey_id","user_id", "board_id", "question_id", "question_etag","survey_id","created_at", "updated_at", "score", "notes", "data")
+VALUES(1,1,1, 1, 1, now() - '30d'::INTERVAL * random(), 701, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5', CONCAT('answer', "answer"), {'{"FoodType":"veg","pref":"High"}'}  )
+
+
+
+
+
+
+INSERT INTO "public"."Boards"("board_id", "name")
+VALUES (1, 'Board-1'),
+(2, 'Board-2'),
+(3, 'Board-3');
+
+
+INSERT INTO "public"."Questions"("question_id","board_id", "type", "data", "etag", "is_deleted")
+VALUES (1, 1, 'type-a', '{"Question" : "React?"}', Now(), FALSE),
+(2, 2, 'type-b', '{"Question" : "Angularjs?"}', Now(), FALSE),
+(3, 3, 'type-c', '{"Question" : "Lumen"}', Now(), FALSE),
+(4, 1, 'type-a', '{"Question" : "Redux + Redux Toolkit"}', Now(), FALSE),
+(5, 2, 'type-b', '{"Question" : "React / styled-components"}', Now(), FALSE),
+(6, 3, 'type-c', '{"Question" : "React / Router"}', Now(), FALSE),
+(7, 1, 'type-a', '{"Question" : "Redux / Saga"}', Now(), FALSE),
+(8, 2, 'type-b', '{"Question" : "Webpack"}', Now(), FALSE),
+(9, 3, 'type-c', '{"Question" : "Rollup"}', Now(), FALSE),
+(10, 1, 'type-a', '{"Question" : "ESLint"}', Now(), FALSE),
+(11, 2, 'type-b', '{"Question" : "jQuery"}', Now(), FALSE);
+
+INSERT INTO "public"."Users"("user_id","name")
+VALUES (1, 'Sindi'),
+(2, 'Egi'),
+(3, 'Admir');
+
+ INSERT INTO "public"."Survey" ("survey_id","board_id", "created_at","updated_at","open_since" , "open_until")
+VALUES (1,1, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() + '7d'::INTERVAL * random() );
+
+
+ INSERT INTO "public"."Board_Admins"("board_id","user_id")
+VALUES (1, 1),
+(2, 3),
+(3, 2);
+
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(1,	1,	1,	1,	1,	'2022-07-11 10:07:44.869819+00',	'2022-07-11 10:07:44.869953+00',	'2022-07-11 10:07:44.869953+00',	5,	'["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+',	'Answer1');
+
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(2,2,2, 1, 2, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5','["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(3,3,3, 1, 3, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(4,1,1, 1, 4, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5', '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(5,2,2, 1, 5, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(6,3,3, 1, 6, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(7,1,1, 1, 7, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(8,2,2, 1, 8, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(9,3,3, 1, 9, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
+ INSERT INTO "Answers" ("answer_id", "board_id", "user_id", "survey_id", "question_id", "question_etag", "created_at", "updated_at", "score", "data", "notes")
+VALUES(10,1,1, 1, 10, now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), now() - '30d'::INTERVAL * random(), '5',  '["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]', 'answer1');
 
 
 
