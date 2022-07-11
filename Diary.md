@@ -145,7 +145,7 @@
 
 # Day 8.
 
-   *We started the day early in the morning even tho it was a day off. Even In the weekend we made a lot of progress. We meet
+   *Today and during the weekend we made a lot of progress. We meet
     up with each other in a library to work and talk together in a quite place. This turned out to be really productive way and we had
     a lot of things done. We also had a conversation with some of the other team memebers and leaders, and exchanged a lot of ideas 
     with each other and that helped too. So over all it was a really productive weekend.
@@ -156,3 +156,13 @@
     -During those days i mostly worked and helped in the front end part.
     
     -I created some of the layout of the questions in the front end. 
+
+
+-Admir's diary
+
+    -After we found a way to show all the answers and questions from hasura in the front end I used Materialized UI to design the front-end. Based on the type of each question we created a new design and a new way of filling the answers. 
+
+    -After that I worked a little bit with the database because we found out that there was some mistakes. We worked to get all the answers that user checks in the front-end by using queryMutations , we are thinking to create a new table in database to post all the answers with the userid so we can calculate the score and the number of questions that each user has not filled yet. 
+
+    -This is our next goal and by communicating with the others and by the help of our mentors we hope to finish this step by tomorrow.
+
