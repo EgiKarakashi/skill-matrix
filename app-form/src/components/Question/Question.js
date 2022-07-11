@@ -27,7 +27,7 @@ const Question = (props) => {
   //Selected Button ...
   const [selectedValue, setSelectedValue] = useState([]);
   console.log([selectedValue]);
-  console.log("Question Index...", props?.questions?.data?.Questions?.length);
+  console.log("Question Index...",  props?.questions?.data?.Questions?.[index]?.data?.Question);
 
   const handleNext = () => {
     if (index < props?.questions?.data?.Questions?.length - 1) {
@@ -87,7 +87,7 @@ const Question = (props) => {
                         >
                           {
                             props?.questions?.data?.Questions?.[index]?.data
-                              ?.question
+                              ?.Question
                           }
                         </h1>
                       </Box>

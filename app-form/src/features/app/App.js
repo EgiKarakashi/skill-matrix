@@ -16,28 +16,29 @@ const PING_ACTION_QUERY = gql`
 `;
 
 const QUESTION_ACTION_QUERY = gql`
-query MyQuery {
-  Questions {
-    data
-    type
-    question_id
+  query MyQuery {
+    Questions {
+      data
+      type
+      question_id
+    }
+    Answers {
+      data
+      answer_id
+      board_id
+      created_at
+      score
+      survey_id
+      user_id
+    }
   }
-  Answers {
-    data
-    answer_id
-    board_id
-    created_at
-    score
-    survey_id
-    user_id
-  }
-}
 `;
 
 export const App = () => {
   const { isSuccess, data } = useQuery("PingAction", PING_ACTION_QUERY);
 
-  const {isSuccess1, question} = useQuery("QuestionAction", QUESTION_ACTION_QUERY);
+  const question = useQuery("QuestionAction", QUESTION_ACTION_QUERY);
+
 
   return (
     <Routes>
