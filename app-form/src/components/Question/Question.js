@@ -15,7 +15,7 @@ import {
   CardContent
 } from "@mui/material";
 import React, { useState } from "react";
-
+import Emoji from "./Emojis";
 function valuetext(value) {
   return `${value} score`;
 }
@@ -200,7 +200,8 @@ const Question = (props) => {
                                 justifyContent: "center"
                               }}
                             >
-                              loading...
+                              <Emoji symbol="🙁" label="grinnig-face"/>
+                              
                             </div>
                           );
                         }
