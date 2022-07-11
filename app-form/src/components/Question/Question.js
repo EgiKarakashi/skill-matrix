@@ -23,7 +23,8 @@ function valuetext(value) {
 const Question = (props) => {
   const [index, setIndex] = useState(0);
   //Score ....
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(0)
+  const [score, setScore] = useState(0);
   //Selected Button ...
   const [selectedValue, setSelectedValue] = useState([]);
   console.log([selectedValue]);
@@ -56,6 +57,36 @@ const Question = (props) => {
     transitionDuration: "0.3s",
     height: "45vw"
   };
+
+  const onClickRadioButton = (event) => {
+    if (event.target.value === "Strongly Disagree") {
+      setScore(1);
+    } else if (event.target.value === "Disagree") {
+      setScore(2)
+    } else if (event.target.value === "Neutral") {
+      setScore(3);
+    } else if (event.target.value === "Agree") {
+      setScore(4);
+    } else {
+      setScore(5);
+    }
+    console.log("radio score: ", score);
+  }
+
+  const onClickEmojiButton = (event) => {
+    if (event.taget.value === 1) {
+      setScore(1);
+    } else if (event.target.value === 2) {
+      setScore(2);
+    } else if (event.target.value === 3) {
+      setScore(3);
+    } else if (event.target.value === 4) {
+      setScore(4);
+    } else {
+      setScore(5);
+    }
+    console.log("emoji score", score);
+  }
 
   return (
     <Box width={"400px"}>
@@ -112,9 +143,15 @@ const Question = (props) => {
                                 <Slider
                                   getAriaLabel={() => "Temperature range"}
                                   value={value}
-                                  onChange={handleChange}
+                                  // onChange={handleChange}
+                                  onChange={(event) => console.log(event.target.value)}
                                   valueLabelDisplay="auto"
+                                  aria-labelledby="input-slider"
                                   getAriaValueText={valuetext}
+                                  step={1}
+                                  marks
+                                  min={1}
+                                  max={5}
                                 />
                               </Box>
                             </div>
@@ -133,6 +170,7 @@ const Question = (props) => {
                                   justifyContent: "center"
                                 }}
                                 onChange={handleChange}
+                                onClick={onClickRadioButton}
                               >
                                 <FormControlLabel
                                   value={
@@ -200,7 +238,7 @@ const Question = (props) => {
                                 justifyContent: "center"
                               }}
                             >
-                              <Emoji symbol="🙁" label="grinnig-face"/>
+                              <Emoji onClick={onClickEmojiButton} symbol="🙁" label="grinnig-face"/>
                               
                             </div>
                           );
