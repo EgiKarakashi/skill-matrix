@@ -37,7 +37,7 @@ query MyQuery {
 export const App = () => {
   const { isSuccess, data } = useQuery("PingAction", PING_ACTION_QUERY);
 
-  const question = useQuery("QuestionAction", QUESTION_ACTION_QUERY);
+  const {isSuccess1, question} = useQuery("QuestionAction", QUESTION_ACTION_QUERY);
 
   return (
     <Routes>
