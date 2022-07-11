@@ -140,3 +140,19 @@
     -We were able to get all the questions and answers but we faced some problems trying to show in frontend one question with its answers per page.
 
     - We communicated with our mentors and we are going to try to change the way how queries are structured so we dont have to do multiple mappings to show the data in frontend.
+
+    ####################################################################################################################################################################
+
+# Day 8.
+
+   *We started the day early in the morning even tho it was a day off. Even In the weekend we made a lot of progress. We meet
+    up with each other in a library to work and talk together in a quite place. This turned out to be really productive way and we had
+    a lot of things done. We also had a conversation with some of the other team memebers and leaders, and exchanged a lot of ideas 
+    with each other and that helped too. So over all it was a really productive weekend.
+
+
+ -Sindi's diary   
+    
+    -During those days i mostly worked and helped in the front end part.
+    
+    -I created some of the layout of the questions in the front end. 
