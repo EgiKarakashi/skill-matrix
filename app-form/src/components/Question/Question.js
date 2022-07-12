@@ -18,7 +18,9 @@ import React, { useEffect, useState } from "react";
 import Emoji from "./Emojis";
 import classes from "./Question.module.css";
 import axios from 'axios';
-import {gql} from "../../services/hasura-client"
+import {gql} from "../../services/hasura-client";
+
+import { useNavigate } from "react-router-dom";
 
 
 function valuetext(value) {
@@ -30,6 +32,14 @@ const Question = (props) => {
   //Score ....
 
   const [score, setScore] = useState(null);
+
+
+  const history = useNavigate();
+  
+    const handleClick = () => {
+      history("/lastpage");
+    };
+
 
   console.log(
     "Question Index...",
@@ -299,16 +309,29 @@ const Question = (props) => {
                     onClick={handleNext && submitAnswer}
                     disableRipple
                   >
-                    {maxLength === index ? "Submit" : "Next"}
-                  </Button>
-                </Stack>
-              </div>
-            </Typography>
-          </Container>
-        </CardContent>
-      </Card>
-    </Box>
-  );
-};
+                    {maxLength === index ? "" : "Next"}
+
+                      {maxLength === index ? (
+                      <Button
+                      variant="contained"
+                      disabled={index === 0}
+                      onClick={handleClick}
+                      disableRipple
+                      >
+                      Submit
+                      </Button>
+                      ) : (
+                      ""
+                      )}
+                     </Button>
+                  </Stack>
+                </div>
+              </Typography>
+            </Container>
+          </CardContent>
+          </Card>
+          </Box>
+                        );
+                      };
 
 export default Question;

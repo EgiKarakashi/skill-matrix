@@ -3,6 +3,7 @@ import Page from "../../components/Page";
 import { Logout } from "./Logout";
 import { Routes, Route } from 'react-router-dom'; 
 import WelcomePage from "../../components/WelcomePage/WelcomePage";
+import LastPage from "../../components/LastPage/LastPage";
 import Question from '../../components/Question/Question';
 
 
@@ -48,6 +49,8 @@ export const App = () => {
         : "loading time..."}
     </Page>} />
       <Route path="/fill" element={<Question questions={question} />} />
+      <Route path="/lastpage" element={<LastPage  />} />
     </Routes>
   );
 };
+
