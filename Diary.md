@@ -168,9 +168,9 @@
 
 -Egi's diary
 
-  -During the weekend I worked on getting the data from the database to the frontend with the React Query and managed to get it done without any issues.
+    -During the weekend I worked on getting the data from the database to the frontend with the React Query and managed to get it done without any issues.
 
-  -Today we mainly worked as a group to seed some more data to the database to use the other types of questions so we could test the other question layouts. Also experimented on how to get the state of the clicked radio button and the slider to set a score to it. Was having some issue with getting the state of the emoji buttons but will have a look into it with the mentors tomorrow.
+    -Today we mainly worked as a group to seed some more data to the database to use the other types of questions so we could test the other question layouts. Also experimented on how to get the state of the clicked radio button and the slider to set a score to it. Was having some issue with getting the state of the emoji buttons but will have a look into it with the mentors tomorrow.
 
-  -Our goal for tomorrow is to get the to try and get the answers to the database via the queryMutations and set a score to each answer, will also check the progress of the answered questions as well.
+    -Our goal for tomorrow is to get the to try and get the answers to the database via the queryMutations and set a score to each answer, will also check the progress of the answered questions as well.
 

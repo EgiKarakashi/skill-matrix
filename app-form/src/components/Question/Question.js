@@ -23,8 +23,8 @@ function valuetext(value) {
 const Question = (props) => {
   const [index, setIndex] = useState(0);
   //Score ....
-  const [value, setValue] = useState(0);
-  const [score, setScore] = useState(0);
+  // const [value, setValue] = useState(0)
+  const [score, setScore] = useState(1);
   //Selected Button ...
   const [selectedValue, setSelectedValue] = useState([]);
   console.log([selectedValue]);
@@ -41,12 +41,12 @@ const Question = (props) => {
     }
   };
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setSelectedValue(
-      typeof value === "String" || value === "Int" ? value.split(",") : value
-    );
-  };
+  // const handleChange = (event) => {
+  //   const value = event.target.value;
+  //   setSelectedValue(
+  //     typeof value === "String" || value === "Int" ? value.split(",") : value
+  //   );
+  // };
 
   const handlePrevious = () => {
     if (index >= 0) {
@@ -145,7 +145,7 @@ const Question = (props) => {
                                 <Typography component="legend"></Typography>
                                 <Slider
                                   getAriaLabel={() => "Range"}
-                                  value={value}
+                                  score={score}
                                   // onChange={handleChange}
                                   onChange={(event) =>
                                     console.log(event.target.value)
@@ -175,11 +175,11 @@ const Question = (props) => {
                                   alignItems: "flex-start",
                                   justifyContent: "center"
                                 }}
-                                onChange={handleChange}
+                                // onChange={handleChange}
                                 onClick={onClickRadioButton}
                               >
                                 <FormControlLabel
-                                  value={
+                                  score={
                                     props?.questions?.data?.Answers?.[index]
                                       ?.data[0]
                                   }
@@ -245,7 +245,7 @@ const Question = (props) => {
                               alignItems: "flex-start",
                               justifyContent: "center"
                             }}
-                            onChange={handleChange}
+                           
                             onClick={onClickRadioButton}
                             onChange={(event) =>
                                     console.log(event.target.value)
