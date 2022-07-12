@@ -70,9 +70,8 @@ const Question = (props) => {
   const BASE_URL = "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
 
   const ADD_POST = gql`
-  mutation MyMutation($answer_id: Int!, $data: json, $question_etag: timestamptz, $question_id: Int!, $score: Int!, $survey_id: Int!, $board_id: Int!, $user_id: Int!) {
-    insert_Answers_one(object: {answer_id: $answer_id, data: $data, question_etag: $question_etag, question_id: $question_id, score: $score, survey_id: $survey_id, board_id: $board_id, user_id: $user_id}) {
-      answer_id
+  mutation MyMutation($data: json, $question_etag: timestamptz, $question_id: Int!, $score: Int!, $survey_id: Int!, $board_id: Int!, $user_id: Int!) {
+    insert_Answers_one(object: {data: $data, question_etag: $question_etag, question_id: $question_id, score: $score, survey_id: $survey_id, board_id: $board_id, user_id: $user_id}) {
       data
       question_etag
       question_id
@@ -94,8 +93,7 @@ const Question = (props) => {
       },
       data: {
         variables: {
-          answer_id: 123,
-          question_id: 9,
+          question_id: index + 1,
           survey_id: 1,
           question_etag: "2022-07-11T10:07:44.869819+00:00",
           score: score,
