@@ -209,3 +209,27 @@
 
     -Still have to work on getting the progress of the answered questions.
 
+
+-Admir's diary
+
+   - Today the first task for me was to save in a State all the scores for each answer that
+     the user checks.
+     For each type of questions I used "onChange" to save the value of score in the state. 
+
+   - After that I worked in the front-end to make it responsive and to show the last page when      the user clicks Submit.
+    The "Submit" button is showed only in the last question so the user can go back or can click Submit.
+    In this page we are going to show how many questions the user hasent answered and the score.
+
+   - Next step for us was to post the answers in hasura, we used different web pages to learn 
+     how it works and we communicated 
+     with the other teams which were stuck in this step:
+
+    https://tkdodo.eu/blog/mastering-mutations-in-react-query
+    https://react-query-alpha.tanstack.com/reference/useMutation
+
+    - We created the queries for the mutations and we used axios. Each post is done when the user clicks NEXT and
+    informations are posted in the database including the score.
+    At first we faced some problems because some errors accoured, the error was: "not a valid graphql query"
+    These problems were realted to the query, we changed the structure of the query and the posting worked fine and they showed in table Answers.
+
+    - Our next step is to show the score and the number of questions that the user hasent been answered.
