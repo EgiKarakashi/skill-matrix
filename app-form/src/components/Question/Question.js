@@ -139,6 +139,7 @@ const Question = (props) => {
                           style={{
                             color: "black",
                             textAlign: "center",
+                            fontSize: 25,
                             paddingBottom: 45
                           }}
                         >
