@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Emoji from "./Emojis";
-import classes from './Question.module.css';
+import classes from "./Question.module.css";
 
 function valuetext(value) {
   return `${value} score`;
@@ -41,14 +41,12 @@ const Question = (props) => {
     }
   };
 
-
   const handlePrevious = () => {
     if (index >= 0) {
       setIndex(index - 1);
       console.log("Index at handle prev...");
     }
   };
-
 
   const onClickRadioButton = (event) => {
     if (event.target.value === "Strongly Disagree") {
@@ -78,14 +76,11 @@ const Question = (props) => {
     }
   };
 
-
-  useEffect(()=> {
+  useEffect(() => {
     console.log("score", score);
   }, [score]);
 
-
-  console.log("length", props?.questions?.data?.Answers?.[index]
-    ?.data?.length);
+  console.log("length", props?.questions?.data?.Answers?.[index]?.data?.length);
 
   const maxLength = props?.questions?.data?.Questions?.length - 1;
 
@@ -99,8 +94,8 @@ const Question = (props) => {
           alt="unsplash image"
         />
 
-        <CardContent >
-          <Container >
+        <CardContent>
+          <Container>
             <Typography gutterBottom variant="h5" component="div">
               {props?.questions?.isSuccess ? (
                 <div>
@@ -147,6 +142,7 @@ const Question = (props) => {
                                   onChange={(event) =>
                                     console.log(event.target.value)
                                   }
+                                  onChange={(e) => setScore(e.target.value)}
                                   valueLabelDisplay="auto"
                                   aria-labelledby="input-slider"
                                   getAriaValueText={valuetext}
@@ -240,15 +236,10 @@ const Question = (props) => {
                                 alignItems: "flex-start",
                                 justifyContent: "center"
                               }}
-                              onChange={(event) =>
-                                console.log(event.target.value)
-                              }
-                              onClick={onClickEmojiButton}
+                              onChange={(e) => setScore(e.target.value)}
+                             
                             >
-                              <Emoji
-                                symbol="🙁"
-                                label="grinnig-face"
-                              />
+                              <Emoji symbol="🙁" label="grinnig-face" />
                             </div>
                           );
                         }
@@ -268,14 +259,18 @@ const Question = (props) => {
                 }}
               >
                 <Stack spacing={2} direction="row">
-                  {maxLength === index ? "" : <Button
-                    variant="contained"
-                    disabled={index === 0}
-                    onClick={handlePrevious}
-                    disableRipple
-                  >
-                    Previous
-                  </Button>}
+                  {maxLength === index ? (
+                    ""
+                  ) : (
+                    <Button
+                      variant="contained"
+                      disabled={index === 0}
+                      onClick={handlePrevious}
+                      disableRipple
+                    >
+                      Previous
+                    </Button>
+                  )}
                   <Button
                     variant="contained"
                     onClick={handleNext}
