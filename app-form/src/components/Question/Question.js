@@ -23,8 +23,8 @@ function valuetext(value) {
 const Question = (props) => {
   const [index, setIndex] = useState(0);
   //Score ....
-  const [value, setValue] = useState(0)
-  const [score, setScore] = useState(0);
+  // const [value, setValue] = useState(0)
+  const [score, setScore] = useState(1);
   //Selected Button ...
   const [selectedValue, setSelectedValue] = useState([]);
   console.log([selectedValue]);
@@ -38,12 +38,12 @@ const Question = (props) => {
     }
   };
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setSelectedValue(
-      typeof value === "String" || value === "Int" ? value.split(",") : value
-    );
-  };
+  // const handleChange = (event) => {
+  //   const value = event.target.value;
+  //   setSelectedValue(
+  //     typeof value === "String" || value === "Int" ? value.split(",") : value
+  //   );
+  // };
 
   const handlePrevious = () => {
     if (index >= 0) {
@@ -59,16 +59,24 @@ const Question = (props) => {
   };
 
   const onClickRadioButton = (event) => {
-    if (event.target.value === "Strongly Disagree") {
-      setScore(1);
-    } else if (event.target.value === "Disagree") {
-      setScore(2)
-    } else if (event.target.value === "Neutral") {
-      setScore(3);
-    } else if (event.target.value === "Agree") {
-      setScore(4);
-    } else {
-      setScore(5);
+    switch (event.target.value) {
+      case "Strongly Disagree":
+        setScore(1);
+        break;
+      case "Disagree": 
+        setScore(2);
+        break;
+      case "Neutral":
+        setScore(3);
+        break;
+      case "Agree":
+        setScore(4);
+        break;
+      case "Strongly Agree":
+        setScore(5);
+        break;
+      default:
+        break;
     }
     console.log("radio score: ", score);
   }
@@ -142,7 +150,7 @@ const Question = (props) => {
                                 <Typography component="legend"></Typography>
                                 <Slider
                                   getAriaLabel={() => "Temperature range"}
-                                  value={value}
+                                  score={score}
                                   // onChange={handleChange}
                                   onChange={(event) => console.log(event.target.value)}
                                   valueLabelDisplay="auto"
@@ -169,11 +177,11 @@ const Question = (props) => {
                                   alignItems: "flex-start",
                                   justifyContent: "center"
                                 }}
-                                onChange={handleChange}
+                                // onChange={handleChange}
                                 onClick={onClickRadioButton}
                               >
                                 <FormControlLabel
-                                  value={
+                                  score={
                                     props?.questions?.data?.Answers?.[index]
                                       ?.data[0]
                                   }
@@ -237,6 +245,7 @@ const Question = (props) => {
                                 display: "flex",
                                 justifyContent: "center"
                               }}
+                              onClick={onClickRadioButton}
                             >
                               <Emoji onClick={onClickEmojiButton} symbol="🙁" label="grinnig-face"/>
                               
