@@ -5,6 +5,8 @@
     - After finishing all this we started setting up the database. Down below we have explained how the first day actually went and what each one of us did.
 
 -Sindi's diary
+      
+     - We worked together as a group to create an logical idea about the requiremnets of the projects
 
      - Pulled the repo and created the migrations for other tables, after creating them I pushed my changes on GitHub.
 
@@ -153,9 +155,13 @@
 
  -Sindi's diary   
     
-    -During those days i mostly worked and helped in the front end part.
+    -During those days i mostly worked and helped in the front end part where i styled some of the pages.
     
-    -I created some of the layout of the questions in the front end. 
+    -I created some of the layout of the questions in the front end and we talked together to see how to combine them with eachother
+
+    -Today mostly we  worked as a group to seed some more data to the database to use the other types of questions.
+
+    -After doing that we were able to test the other question layouts. Also experimented on how to get the state of the clicked radio button and the slider to set a score to it. 
 
 
 -Admir's diary
@@ -174,3 +180,23 @@
 
     -Our goal for tomorrow is to get the to try and get the answers to the database via the queryMutations and set a score to each answer, will also check the progress of the answered questions as well.
 
+
+####################################################################################################################################################################
+
+# Day 9.
+
+   *Today was the first day at the office after three days off.First we discussed with each other and we decided to set some main goals to accomplished till the end of the day.
+    After that we had a meeting with Semra where we reported what we did during the weekend and what were our goals for today.Right after that we were ready to start with our work
+    for today,but first we checked if everything was working right an we noticed some things were missing and some other things needed some fixes and that's what we did next.
+
+
+  -Sindi's diary
+
+    -As we said before the first thing we decided to do was to check if everything was working the way it should.
+
+    -After doing all the testing if the things i worked on were working right i noticed some little problems with the score setting but then i asked Egi (my team lider) and he helped me fix that.
+
+    -Then i made some changes in the question leyouts,where i created a new file called Questtion.module.css where i did some styling. Another advantage of creating this file is that this  
+     will help the code to look cleaner and to be more understandable. 
+
+    -After finishing with all those now i'm doing some researches for how to apply POST method to Question.js and to be  able to read user answers from frontend and save them to database. This mutation will be able to add a new row into the database, as a user would give a new answer.
