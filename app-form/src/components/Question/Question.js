@@ -17,6 +17,9 @@ import {
 import React, { useEffect, useState } from "react";
 import Emoji from "./Emojis";
 import classes from "./Question.module.css";
+import axios from 'axios';
+import {gql} from "../../services/hasura-client"
+
 
 function valuetext(value) {
   return `${value} score`;
@@ -62,23 +65,52 @@ const Question = (props) => {
     }
   };
 
-  const onClickEmojiButton = (event) => {
-    if (event.taget.value === 1) {
-      setScore(1);
-    } else if (event.target.value === 2) {
-      setScore(2);
-    } else if (event.target.value === 3) {
-      setScore(3);
-    } else if (event.target.value === 4) {
-      setScore(4);
-    } else {
-      setScore(5);
-    }
-  };
+  const ADMIN_SECRET = "hasura";
 
-  useEffect(() => {
-    console.log("score", score);
-  }, [score]);
+  const BASE_URL = "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
+
+  const ADD_POST = gql`
+  mutation MyMutation($answer_id: Int!, $data: json, $question_etag: timestamptz, $question_id: Int!, $score: Int!, $survey_id: Int!, $board_id: Int!, $user_id: Int!) {
+    insert_Answers_one(object: {answer_id: $answer_id, data: $data, question_etag: $question_etag, question_id: $question_id, score: $score, survey_id: $survey_id, board_id: $board_id, user_id: $user_id}) {
+      answer_id
+      data
+      question_etag
+      question_id
+      score
+      survey_id
+      board_id
+      user_id
+    }
+  }`;
+
+  
+  const submitAnswer = () => {
+    handleNext();
+    axios({
+      url: BASE_URL,
+      method: "POST",
+      headers: {
+        "x-hasura-admin-secret": ADMIN_SECRET,
+      },
+      data: {
+        variables: {
+          answer_id: 123,
+          question_id: 9,
+          survey_id: 1,
+          question_etag: "2022-07-11T10:07:44.869819+00:00",
+          score: score,
+          data:"test",
+          board_id: 1,
+          user_id: 1
+        },
+        query: ADD_POST,
+      },
+    })
+    .then(res => console.log(res.data))
+    .catch((err)=>{
+      console.log(err);
+    });
+  }
 
   console.log("length", props?.questions?.data?.Answers?.[index]?.data?.length);
 
@@ -139,9 +171,6 @@ const Question = (props) => {
                                 <Slider
                                   getAriaLabel={() => "Range"}
                                   score={score}
-                                  onChange={(event) =>
-                                    console.log(event.target.value)
-                                  }
                                   onChange={(e) => setScore(e.target.value)}
                                   valueLabelDisplay="auto"
                                   aria-labelledby="input-slider"
@@ -273,7 +302,7 @@ const Question = (props) => {
                   )}
                   <Button
                     variant="contained"
-                    onClick={handleNext}
+                    onClick={handleNext && submitAnswer}
                     disableRipple
                   >
                     {maxLength === index ? "Submit" : "Next"}
