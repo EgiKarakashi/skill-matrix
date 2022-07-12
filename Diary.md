@@ -190,7 +190,7 @@
     for today,but first we checked if everything was working right an we noticed some things were missing and some other things needed some fixes and that's what we did next.
 
 
-  -Sindi's diary
+-Sindi's diary
 
     -As we said before the first thing we decided to do was to check if everything was working the way it should.
 
@@ -200,3 +200,12 @@
      will help the code to look cleaner and to be more understandable. 
 
     -After finishing with all those now i'm doing some researches for how to apply POST method to Question.js and to be  able to read user answers from frontend and save them to database. This mutation will be able to add a new row into the database, as a user would give a new answer.
+
+-Egi's diary
+
+    -Worked to set the score state with Admir for the three types of the answers.
+
+    -Worked as well on creating the mutation to post the answers to the database. Managed to make it work but having issues with the data on the database for the answers as it overrides the previous ones. Will check what other way to try and post data to the database.
+
+    -Still have to work on getting the progress of the answered questions.
+

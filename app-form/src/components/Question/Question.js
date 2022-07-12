@@ -71,7 +71,7 @@ const Question = (props) => {
 
   const ADD_POST = gql`
   mutation MyMutation($data: json, $question_etag: timestamptz, $question_id: Int!, $score: Int!, $survey_id: Int!, $board_id: Int!, $user_id: Int!) {
-    insert_Answers_one(object: {data: $data, question_etag: $question_etag, question_id: $question_id, score: $score, survey_id: $survey_id, board_id: $board_id, user_id: $user_id}) {
+    insert_Answers_one(object: {data: $data, question_etag: $question_etag, question_id: $question_id, score: $score, survey_id: $survey_id, board_id: $board_id, user_id: $user_id}, on_conflict: {constraint: answers_pkey, update_columns: score, where: {question_id: {_is_null: false}}}) {
       data
       question_etag
       question_id
@@ -97,7 +97,7 @@ const Question = (props) => {
           survey_id: 1,
           question_etag: "2022-07-11T10:07:44.869819+00:00",
           score: score,
-          data:"test",
+          data: [ "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree" ],
           board_id: 1,
           user_id: 1
         },
