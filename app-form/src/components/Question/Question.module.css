@@ -5,3 +5,11 @@
     justify-content: center;
     height: 50vh;
 }
+
+.card {
+    justify-content: center;
+    display: "block";
+    transition-duration: "0.3s";
+    height: "45vw";
+    width: '25rem';
+};

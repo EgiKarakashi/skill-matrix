@@ -14,9 +14,10 @@ import {
   CardMedia,
   CardContent
 } from "@mui/material";
-import "./card-grid.css";
 import React, { useState } from "react";
 import Emoji from "./Emojis";
+import classes from './Question.module.css';
+
 function valuetext(value) {
   return `${value} score`;
 }
@@ -42,12 +43,6 @@ const Question = (props) => {
     }
   };
 
-  // const handleChange = (event) => {
-  //   const value = event.target.value;
-  //   setSelectedValue(
-  //     typeof value === "String" || value === "Int" ? value.split(",") : value
-  //   );
-  // };
 
   const handlePrevious = () => {
     if (index >= 0) {
@@ -56,11 +51,6 @@ const Question = (props) => {
     }
   };
 
-  const cardStyle = {
-    display: "block",
-    transitionDuration: "0.3s",
-    height: "45vw"
-  };
 
   const onClickRadioButton = (event) => {
     if (event.target.value === "Strongly Disagree") {
@@ -95,7 +85,7 @@ const Question = (props) => {
 
   return (
     <Box width={"400px"}>
-      <Card style={cardStyle} style={{ width: '25rem' }} className={"card-grid"}>
+      <Card className={classes.card}>
         <CardMedia
           component="img"
           height="100"
@@ -180,7 +170,7 @@ const Question = (props) => {
                                 onClick={onClickRadioButton}
                               >
                                 <FormControlLabel
-                                  score={
+                                  value={
                                     props?.questions?.data?.Answers?.[index]
                                       ?.data[0]
                                   }
