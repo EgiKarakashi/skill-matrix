@@ -67,16 +67,17 @@ const Question = (props) => {
 
   const ADMIN_SECRET = "hasura";
 
-  const BASE_URL = "https://8080-egikarakash-skillmatrix-ya0t392lvgh.ws-eu53.gitpod.io/v1/graphql";
+  const BASE_URL = "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
 
   const ADD_POST = gql`
-  mutation MyMutation($user_ans: json , $user_id: Int , $user_score: Int ) {
-    insert_user_answers_one(object: {user_ans: $user_ans, user_id: $user_id, user_score: $user_score}) {
-      user_ans
-      user_id
-      user_score
+    mutation MyMutation($User_answer_id: Int!, $data: json, $score: Int!, $user_id: Int!, $_is_null: Boolean = false) {
+      insert_User_Answers_one(object: {User_answer_id: $User_answer_id, data: $data, score: $score, user_id: $user_id}, on_conflict: {constraint: User_answer_pkey, update_columns: score, where: {user_id: {_is_null: false}}}) {
+        User_answer_id
+        data
+        score
+        user_id
+      }
     }
-  }
   `;
 
   
@@ -90,9 +91,10 @@ const Question = (props) => {
       },
       data: {
         variables: {
+          User_answer_id: index + 1,
           user_id: 1,
-          user_score: score,
-          user_ans: [ "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree" ]
+          score: score,
+          data: [ "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree" ]
         },
         query: ADD_POST,
       },
