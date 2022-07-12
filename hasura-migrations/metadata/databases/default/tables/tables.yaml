@@ -6,3 +6,4 @@
 - "!include public_Users.yaml"
 - "!include public_surveys_invites.yaml"
 - "!include public_surveys_questions.yaml"
+- "!include public_user_answers.yaml"
