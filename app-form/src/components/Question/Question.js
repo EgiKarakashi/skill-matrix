@@ -14,7 +14,7 @@ import {
   CardMedia,
   CardContent
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Emoji from "./Emojis";
 import classes from './Question.module.css';
 
@@ -25,11 +25,9 @@ function valuetext(value) {
 const Question = (props) => {
   const [index, setIndex] = useState(0);
   //Score ....
-  // const [value, setValue] = useState(0)
-  const [score, setScore] = useState(1);
-  //Selected Button ...
-  const [selectedValue, setSelectedValue] = useState([]);
-  console.log([selectedValue]);
+
+  const [score, setScore] = useState(null);
+
   console.log(
     "Question Index...",
     props?.questions?.data?.Questions?.[index]?.data?.Question
@@ -64,7 +62,6 @@ const Question = (props) => {
     } else {
       setScore(5);
     }
-    console.log("radio score: ", score);
   };
 
   const onClickEmojiButton = (event) => {
@@ -79,9 +76,18 @@ const Question = (props) => {
     } else {
       setScore(5);
     }
-    console.log("emoji score", score);
   };
 
+
+  useEffect(()=> {
+    console.log("score", score);
+  }, [score]);
+
+
+  console.log("length", props?.questions?.data?.Answers?.[index]
+    ?.data?.length);
+
+  const maxLength = props?.questions?.data?.Questions?.length - 1;
 
   return (
     <Box width={"400px"}>
@@ -138,7 +144,6 @@ const Question = (props) => {
                                 <Slider
                                   getAriaLabel={() => "Range"}
                                   score={score}
-                                  // onChange={handleChange}
                                   onChange={(event) =>
                                     console.log(event.target.value)
                                   }
@@ -166,7 +171,6 @@ const Question = (props) => {
                                   alignItems: "flex-start",
                                   justifyContent: "center"
                                 }}
-                                // onChange={handleChange}
                                 onClick={onClickRadioButton}
                               >
                                 <FormControlLabel
@@ -236,13 +240,12 @@ const Question = (props) => {
                                 alignItems: "flex-start",
                                 justifyContent: "center"
                               }}
-                              onClick={onClickRadioButton}
                               onChange={(event) =>
                                 console.log(event.target.value)
                               }
+                              onClick={onClickEmojiButton}
                             >
                               <Emoji
-                                onClick={onClickEmojiButton}
                                 symbol="🙁"
                                 label="grinnig-face"
                               />
@@ -265,20 +268,20 @@ const Question = (props) => {
                 }}
               >
                 <Stack spacing={2} direction="row">
-                  <Button
+                  {maxLength === index ? "" : <Button
                     variant="contained"
                     disabled={index === 0}
                     onClick={handlePrevious}
                     disableRipple
                   >
                     Previous
-                  </Button>
+                  </Button>}
                   <Button
                     variant="contained"
                     onClick={handleNext}
                     disableRipple
                   >
-                    Next
+                    {maxLength === index ? "Submit" : "Next"}
                   </Button>
                 </Stack>
               </div>
