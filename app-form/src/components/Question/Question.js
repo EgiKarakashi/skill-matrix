@@ -14,6 +14,7 @@ import {
   CardMedia,
   CardContent
 } from "@mui/material";
+import "./card-grid.css";
 import React, { useState } from "react";
 import Emoji from "./Emojis";
 function valuetext(value) {
@@ -91,9 +92,10 @@ const Question = (props) => {
     console.log("emoji score", score);
   };
 
+
   return (
     <Box width={"400px"}>
-      <Card style={cardStyle}>
+      <Card style={cardStyle} style={{ width: '25rem' }} className={"card-grid"}>
         <CardMedia
           component="img"
           height="100"
@@ -101,8 +103,8 @@ const Question = (props) => {
           alt="unsplash image"
         />
 
-        <CardContent>
-          <Container>
+        <CardContent >
+          <Container >
             <Typography gutterBottom variant="h5" component="div">
               {props?.questions?.isSuccess ? (
                 <div>
@@ -158,7 +160,6 @@ const Question = (props) => {
                                   min={1}
                                   max={5}
                                 />
-        
                               </Box>
                             </div>
                           );
@@ -239,20 +240,17 @@ const Question = (props) => {
                         } else {
                           return (
                             <div
-                            style={{
-                              display: "flex",
-                              alignContent: "center",
-                              alignItems: "flex-start",
-                              justifyContent: "center"
-                            }}
-                           
-                            onClick={onClickRadioButton}
-                            onChange={(event) =>
-                                    console.log(event.target.value)
-                                  }
-
+                              style={{
+                                display: "flex",
+                                alignContent: "center",
+                                alignItems: "flex-start",
+                                justifyContent: "center"
+                              }}
+                              onClick={onClickRadioButton}
+                              onChange={(event) =>
+                                console.log(event.target.value)
+                              }
                             >
-                               
                               <Emoji
                                 onClick={onClickEmojiButton}
                                 symbol="🙁"
