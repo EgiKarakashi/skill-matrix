@@ -89,7 +89,7 @@ const Question = (props) => {
   const ADMIN_SECRET = "hasura";
 
   const BASE_URL =
-    "https://8080-egikarakash-skillmatrix-3d2ync93ikj.ws-eu53.gitpod.io/v1/graphql";
+    "https://8080-egikarakash-skillmatrix-569hj558ywp.ws-eu53.gitpod.io/v1/graphql";
 
   const ADD_POST = gql`
   mutation MyMutation(
