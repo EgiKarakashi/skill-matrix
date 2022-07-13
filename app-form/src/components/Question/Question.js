@@ -12,6 +12,8 @@ import {
   Slider,
   Card,
   CardMedia,
+  LinearProgress,
+  CircularProgress,
   CardContent
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -150,6 +152,7 @@ const Question = (props) => {
   const maxLength = props?.questions?.data?.Questions?.length - 1;
 
   return (
+   
     <Box width={"400px"}>
       <Card className={classes.card}>
         <CardMedia
@@ -158,7 +161,7 @@ const Question = (props) => {
           image="https://source.unsplash.com/random"
           alt="unsplash image"
         />
-
+ 
         <CardContent>
           <Container>
             <Typography gutterBottom variant="h5" component="div">
@@ -350,8 +353,12 @@ const Question = (props) => {
           variant="body2"
           gutterBottom
         >
-          Your progess is {index + 1} / {maxLength + 1}
+
+         {index + 1} / {maxLength + 1}
+          
         </Typography>
+       
+        <LinearProgress variant="determinate" value={(index)*10}>  </LinearProgress>
       </Card>
     </Box>
   );
