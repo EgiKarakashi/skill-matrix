@@ -255,3 +255,12 @@
     -Added a basic progress counter from the length of the questions received from the database.
 
     -Worked with the other groups to implement a login with JWT token.
+
+
+ -Admir's diary
+
+    - Today we statrted by making the plan and by seeting the objectives of the day. I had to finish the frontend part including the progress, for that I used MUI progress bar. My second task was to create the last page for the user in which we are hopping to show all the questions that the user has answered and the score for each question. 
+
+    - It was a little bit tricky because we had some mistakes in our database and we coulnd't find a way to create the query in the proper way. But in the end of the day I made some changes to the database and created the query.
+
+    - We worked with the other teams to implement the logic of JWT token because we had never workerd with it before and we managed to create it. We are happy to show the output of this journey tomorrow :)
