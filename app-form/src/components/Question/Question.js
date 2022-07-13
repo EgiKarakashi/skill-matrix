@@ -20,6 +20,7 @@ import classes from "./Question.module.css";
 import axios from "axios";
 import { gql } from "../../services/hasura-client";
 
+
 import { useNavigate } from "react-router-dom";
 
 function valuetext(value) {
@@ -46,6 +47,8 @@ const Question = (props) => {
   const handleNext = () => {
     if (index < props?.questions?.data?.Questions?.length - 1) {
       setIndex(index + 1);
+    } else if (maxLength) {
+      history('/lastpage');
     } else {
       setIndex(index);
     }
@@ -162,9 +165,9 @@ const Question = (props) => {
 
   const maxLength = props?.questions?.data?.Questions?.length - 1;
 
-  const progressScore = Math.round((index / maxLength) * 100);
+  const progressScore = Math.floor((index / maxLength) * 100);
 
-  console.log(progressScore);
+  console.log(index);
 
   return (
     <Box width={"400px"}>
@@ -355,26 +358,16 @@ const Question = (props) => {
                     onClick={handleNext && submitAnswer}
                     disableRipple
                   >
-                    {maxLength === index ? "" : "Next"}
-
-                    {maxLength === index ? (
-                      <Button
-                        variant="contained"
-                        disabled={index === 0}
-                        onClick={handleClick}
-                        disableRipple
-                      >
-                        Submit
-                      </Button>
-                    ) : (
-                      ""
-                    )}
+                    Next
                   </Button>
                 </Stack>
               </div>
             </Typography>
           </Container>
         </CardContent>
+        <Typography style={{display: "flex", justifyContent: "center"}} variant="body2" gutterBottom>
+          Your progess is :{progressScore} %
+        </Typography>
       </Card>
     </Box>
   );
