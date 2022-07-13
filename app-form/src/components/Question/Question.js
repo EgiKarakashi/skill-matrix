@@ -343,11 +343,7 @@ const Question = (props) => {
             </Typography>
           </Container>
         </CardContent>
-        <Typography
-          style={{ display: "flex", justifyContent: "center" }}
-          variant="body2"
-          gutterBottom
-        >
+        <Typography className="classes.circle" style={{display: "flex", justifyContent: "center", fontSize: 16, fontWeight: "bold"}} variant="body2" gutterBottom>
           Your progess is {index + 1} / {maxLength + 1}
         </Typography>
       </Card>
