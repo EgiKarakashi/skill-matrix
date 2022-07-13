@@ -16,6 +16,13 @@ array_relationships:
         table:
           name: Board_Admins
           schema: public
+  - name: User_Answers
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: User_Answers
+          schema: public
   - name: surveys_invites
     using:
       foreign_key_constraint_on:

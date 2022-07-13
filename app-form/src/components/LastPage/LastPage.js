@@ -12,20 +12,8 @@ const  LastPage = (props) => {
   return (
     <div className={classes.lastpage}>
       <Typography variant="h3" component="div" gutterBottom>
-        Welcome to the skills survey!
+        Thank you for filling up the survey!
       </Typography>
-      <Typography variant="string" paragraph component="div" gutterBottom>
-        This is a simple app that allows you to fill out a survey about your
-        skills.
-      </Typography>
-      <Typography variant="string" paragraph component="div" gutterBottom>
-        You can interrupt the survey at any time and pick up later within 7
-        days.
-      </Typography>
-      <Typography variant="string" paragraph component="div" gutterBottom>
-        To get started, click the button below.
-      </Typography>
-      
     </div>
   );
 };

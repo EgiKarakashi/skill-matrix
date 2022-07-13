@@ -17,11 +17,10 @@ import {
 import React, { useEffect, useState } from "react";
 import Emoji from "./Emojis";
 import classes from "./Question.module.css";
-import axios from 'axios';
-import {gql} from "../../services/hasura-client";
+import axios from "axios";
+import { gql } from "../../services/hasura-client";
 
 import { useNavigate } from "react-router-dom";
-
 
 function valuetext(value) {
   return `${value} score`;
@@ -31,15 +30,13 @@ const Question = (props) => {
   const [index, setIndex] = useState(0);
   //Score ....
 
-  const [score, setScore] = useState(null);
-
+  const [score, setScore] = useState(0);
 
   const history = useNavigate();
-  
-    const handleClick = () => {
-      history("/lastpage");
-    };
 
+  const handleClick = () => {
+    history("/lastpage");
+  };
 
   console.log(
     "Question Index...",
@@ -62,26 +59,67 @@ const Question = (props) => {
   };
 
   const onClickRadioButton = (event) => {
-    if (event.target.value === "Strongly Disagree") {
-      setScore(1);
-    } else if (event.target.value === "Disagree") {
-      setScore(2);
-    } else if (event.target.value === "Neutral") {
-      setScore(3);
-    } else if (event.target.value === "Agree") {
-      setScore(4);
-    } else {
-      setScore(5);
+    switch (event.target.value) {
+      case "Strongly Disagree":
+        setScore(1);
+        break;
+      case "Disagree":
+        setScore(2);
+        break;
+      case "Neutral":
+        setScore(3);
+        break;
+      case "Agree":
+        setScore(4);
+        break;
+      case "Strongly Agree":
+        setScore(5);
+        break;
+      default:
+        setScore(0);
+        break;
     }
+    console.log("score", score);
+
+    // if (event.target.value === "Strongly Disagree") {
+    //   setScore(1);
+    // } else if (event.target.value === "Disagree") {
+    //   setScore(2);
+    // } else if (event.target.value === "Neutral") {
+    //   setScore(3);
+    // } else if (event.target.value === "Agree") {
+    //   setScore(4);
+    // } else {
+    //   setScore(5);
+    // }
   };
 
   const ADMIN_SECRET = "hasura";
 
-  const BASE_URL = "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
+  const BASE_URL =
+    "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
 
   const ADD_POST = gql`
-    mutation MyMutation($User_answer_id: Int!, $data: json, $score: Int!, $user_id: Int!, $_is_null: Boolean = false) {
-      insert_User_Answers_one(object: {User_answer_id: $User_answer_id, data: $data, score: $score, user_id: $user_id}, on_conflict: {constraint: User_answer_pkey, update_columns: score, where: {user_id: {_is_null: false}}}) {
+    mutation MyMutation(
+      $User_answer_id: Int!
+      $data: json
+      $score: Int!
+      $user_id: Int!
+      $_is_null: Boolean = false
+    ) {
+      insert_User_Answers_one(
+        object: {
+          User_answer_id: $User_answer_id
+          data: $data
+          score: $score
+          user_id: $user_id
+        }
+        on_conflict: {
+          constraint: User_answer_pkey
+          update_columns: score
+          where: { user_id: { _is_null: false } }
+        }
+      ) {
         User_answer_id
         data
         score
@@ -90,34 +128,43 @@ const Question = (props) => {
     }
   `;
 
-  
   const submitAnswer = () => {
     handleNext();
     axios({
       url: BASE_URL,
       method: "POST",
       headers: {
-        "x-hasura-admin-secret": ADMIN_SECRET,
+        "x-hasura-admin-secret": ADMIN_SECRET
       },
       data: {
         variables: {
           User_answer_id: index + 1,
           user_id: 1,
           score: score,
-          data: [ "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree" ]
+          data: [
+            "Strongly Disagree",
+            "Disagree",
+            "Neutral",
+            "Agree",
+            "Strongly Agree"
+          ]
         },
-        query: ADD_POST,
-      },
+        query: ADD_POST
+      }
     })
-    .then(res => console.log(res.data))
-    .catch((err)=>{
-      console.log(err);
-    });
-  }
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   console.log("length", props?.questions?.data?.Answers?.[index]?.data?.length);
 
   const maxLength = props?.questions?.data?.Questions?.length - 1;
+
+  const progressScore = Math.round((index / maxLength) * 100);
+
+  console.log(progressScore);
 
   return (
     <Box width={"400px"}>
@@ -270,9 +317,8 @@ const Question = (props) => {
                                 justifyContent: "center"
                               }}
                               onChange={(e) => setScore(e.target.value)}
-                             
                             >
-                              <Emoji symbol="🙁" label="grinnig-face" />
+                              <Emoji label="grinnig-face" />
                             </div>
                           );
                         }
@@ -311,27 +357,27 @@ const Question = (props) => {
                   >
                     {maxLength === index ? "" : "Next"}
 
-                      {maxLength === index ? (
+                    {maxLength === index ? (
                       <Button
-                      variant="contained"
-                      disabled={index === 0}
-                      onClick={handleClick}
-                      disableRipple
+                        variant="contained"
+                        disabled={index === 0}
+                        onClick={handleClick}
+                        disableRipple
                       >
-                      Submit
+                        Submit
                       </Button>
-                      ) : (
+                    ) : (
                       ""
-                      )}
-                     </Button>
-                  </Stack>
-                </div>
-              </Typography>
-            </Container>
-          </CardContent>
-          </Card>
-          </Box>
-                        );
-                      };
+                    )}
+                  </Button>
+                </Stack>
+              </div>
+            </Typography>
+          </Container>
+        </CardContent>
+      </Card>
+    </Box>
+  );
+};
 
 export default Question;
