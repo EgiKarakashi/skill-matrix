@@ -233,3 +233,17 @@
     These problems were realted to the query, we changed the structure of the query and the posting worked fine and they showed in table Answers.
 
     - Our next step is to show the score and the number of questions that the user hasent been answered.
+
+
+# Day 10.
+
+   *During the meeting with Semra today we were informed that tomorrow is the day of the presantion.So we took a look back to where we started till now. We also did a sum up for how far we have come and our journey during this project. Another thing we did was to check if everything was working right and added some missing things to somehow complete the project.
+    
+    
+ -Sindi's diary
+
+    -Today we actually did a lot of work. Some fixes to make everything even better and some other things we added that were needed for the project to be somehow compleated.
+
+    -We made the last fixes on the frontend part , one thing tht i did today was a basic score  progres that was going to show users the progress they were making or how much questions they had left .
+
+    -After finishing with that we also did the jwt implementation.
