@@ -1,5 +1,5 @@
 CREATE TABLE "public"."User_Answers" (
-    "User_answer_id" integer  NOT NULL,
+    "User_answer_id" bigserial,
     "user_id" integer,
     "score" integer,
     "data" json DEFAULT '{}',

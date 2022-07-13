@@ -20,7 +20,6 @@ import classes from "./Question.module.css";
 import axios from "axios";
 import { gql } from "../../services/hasura-client";
 
-
 import { useNavigate } from "react-router-dom";
 
 function valuetext(value) {
@@ -48,7 +47,7 @@ const Question = (props) => {
     if (index < props?.questions?.data?.Questions?.length - 1) {
       setIndex(index + 1);
     } else if (maxLength) {
-      history('/lastpage');
+      history("/lastpage");
     } else {
       setIndex(index);
     }
@@ -83,18 +82,6 @@ const Question = (props) => {
         break;
     }
     console.log("score", score);
-
-    // if (event.target.value === "Strongly Disagree") {
-    //   setScore(1);
-    // } else if (event.target.value === "Disagree") {
-    //   setScore(2);
-    // } else if (event.target.value === "Neutral") {
-    //   setScore(3);
-    // } else if (event.target.value === "Agree") {
-    //   setScore(4);
-    // } else {
-    //   setScore(5);
-    // }
   };
 
   const ADMIN_SECRET = "hasura";
@@ -103,32 +90,28 @@ const Question = (props) => {
     "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
 
   const ADD_POST = gql`
-    mutation MyMutation(
-      $User_answer_id: Int!
-      $data: json
-      $score: Int!
-      $user_id: Int!
-      $_is_null: Boolean = false
-    ) {
-      insert_User_Answers_one(
-        object: {
-          User_answer_id: $User_answer_id
-          data: $data
-          score: $score
-          user_id: $user_id
-        }
-        on_conflict: {
-          constraint: User_answer_pkey
-          update_columns: score
-          where: { user_id: { _is_null: false } }
-        }
-      ) {
-        User_answer_id
-        data
-        score
-        user_id
+  mutation MyMutation(
+    $data: json
+    $score: Int!
+    $user_id: Int!
+  ) {
+    insert_User_Answers_one(
+      object: {
+        data: $data
+        score: $score
+        user_id: $user_id
       }
+      on_conflict: {
+        constraint: User_answer_pkey
+        update_columns: score
+        where: { user_id: { _is_null: false } }
+      }
+    ) {
+      data
+      score
+      user_id
     }
+  }
   `;
 
   const submitAnswer = () => {
@@ -141,8 +124,7 @@ const Question = (props) => {
       },
       data: {
         variables: {
-          User_answer_id: index + 1,
-          user_id: 1,
+          user_id: 3,
           score: score,
           data: [
             "Strongly Disagree",
@@ -164,10 +146,6 @@ const Question = (props) => {
   console.log("length", props?.questions?.data?.Answers?.[index]?.data?.length);
 
   const maxLength = props?.questions?.data?.Questions?.length - 1;
-
-  const progressScore = Math.floor((index / maxLength) * 100);
-
-  console.log(index);
 
   return (
     <Box width={"400px"}>
@@ -365,8 +343,12 @@ const Question = (props) => {
             </Typography>
           </Container>
         </CardContent>
-        <Typography style={{display: "flex", justifyContent: "center"}} variant="body2" gutterBottom>
-          Your progess is :{progressScore} %
+        <Typography
+          style={{ display: "flex", justifyContent: "center" }}
+          variant="body2"
+          gutterBottom
+        >
+          Your progess is {index + 1} / {maxLength + 1}
         </Typography>
       </Card>
     </Box>
