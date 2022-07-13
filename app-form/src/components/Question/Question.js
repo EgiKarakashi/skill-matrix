@@ -87,7 +87,7 @@ const Question = (props) => {
   const ADMIN_SECRET = "hasura";
 
   const BASE_URL =
-    "https://8080-egikarakash-skillmatrix-8xncu9r7ou6.ws-eu53.gitpod.io/v1/graphql";
+    "https://8080-egikarakash-skillmatrix-9iwiq5ac1gi.ws-eu53.gitpod.io/v1/graphql";
 
   const ADD_POST = gql`
   mutation MyMutation(
@@ -114,6 +114,8 @@ const Question = (props) => {
   }
   `;
 
+  console.log("props", parseInt(props?.decodeToken['https://hasura.io/jwt/claims']['x-hasura-user-id']));
+
   const submitAnswer = () => {
     handleNext();
     axios({
@@ -124,7 +126,7 @@ const Question = (props) => {
       },
       data: {
         variables: {
-          user_id: 3,
+          user_id: parseInt(props.decodeToken['https://hasura.io/jwt/claims']['x-hasura-user-id']),
           score: score,
           data: [
             "Strongly Disagree",
@@ -343,7 +345,11 @@ const Question = (props) => {
             </Typography>
           </Container>
         </CardContent>
-        <Typography className="classes.circle" style={{display: "flex", justifyContent: "center", fontSize: 16, fontWeight: "bold"}} variant="body2" gutterBottom>
+        <Typography
+          style={{ display: "flex", justifyContent: "center" }}
+          variant="body2"
+          gutterBottom
+        >
           Your progess is {index + 1} / {maxLength + 1}
         </Typography>
       </Card>
