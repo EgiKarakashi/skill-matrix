@@ -247,3 +247,11 @@
     -We made the last fixes on the frontend part , one thing tht i did today was a basic score  progres that was going to show users the progress they were making or how much questions they had left .
 
     -After finishing with that we also did the jwt implementation.
+
+ -Egi's diary
+
+    -Today worked on finishing up the frontend and made some changes to the mutation with the question id since it was just updating the same questions.
+
+    -Added a basic progress counter from the length of the questions received from the database.
+
+    -Worked with the other groups to implement a login with JWT token.
