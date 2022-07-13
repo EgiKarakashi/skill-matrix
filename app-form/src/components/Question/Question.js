@@ -324,7 +324,7 @@ const Question = (props) => {
                 }}
               >
                 <Stack spacing={2} direction="row">
-                  {maxLength === index ? (
+                  {maxLength + 1 === index  ? (
                     ""
                   ) : (
                     <Button
