@@ -141,7 +141,9 @@ const Question = (props) => {
         query: ADD_POST
       }
     })
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        setScore(0);
+        console.log(res.data)})
       .catch((err) => {
         console.log(err);
       });
