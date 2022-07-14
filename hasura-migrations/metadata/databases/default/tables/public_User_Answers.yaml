@@ -5,3 +5,36 @@ object_relationships:
   - name: User
     using:
       foreign_key_constraint_on: user_id
+insert_permissions:
+  - role: form
+    permission:
+      check: {}
+      columns:
+        - User_answer_id
+        - score
+        - user_id
+        - data
+select_permissions:
+  - role: form
+    permission:
+      columns:
+        - User_answer_id
+        - score
+        - user_id
+        - data
+      filter: {}
+update_permissions:
+  - role: form
+    permission:
+      columns:
+        - User_answer_id
+        - score
+        - user_id
+        - data
+      filter: {}
+      check: null
+delete_permissions:
+  - role: form
+    permission:
+      backend_only: false
+      filter: {}
