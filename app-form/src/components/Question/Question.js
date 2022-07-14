@@ -13,7 +13,6 @@ import {
   Card,
   CardMedia,
   LinearProgress,
-  CircularProgress,
   CardContent
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -29,9 +28,10 @@ function valuetext(value) {
 }
 
 const Question = (props) => {
+  //State to save the index
   const [index, setIndex] = useState(0);
-  //Score ....
 
+  //State to save the score
   const [score, setScore] = useState(0);
 
   const history = useNavigate();
@@ -45,6 +45,7 @@ const Question = (props) => {
     props?.questions?.data?.Questions?.[index]?.data?.Question
   );
 
+  //Next Button Logic
   const handleNext = () => {
     if (index < props?.questions?.data?.Questions?.length - 1) {
       setIndex(index + 1);
@@ -55,6 +56,7 @@ const Question = (props) => {
     }
   };
 
+  //Previous Button Logic
   const handlePrevious = () => {
     if (index >= 0) {
       setIndex(index - 1);
@@ -62,6 +64,7 @@ const Question = (props) => {
     }
   };
 
+  //Radio Buttons Logic
   const onClickRadioButton = (event) => {
     switch (event.target.value) {
       case "Strongly Disagree":
@@ -89,35 +92,34 @@ const Question = (props) => {
   const ADMIN_SECRET = "hasura";
 
   const BASE_URL =
-    "https://8080-egikarakash-skillmatrix-569hj558ywp.ws-eu53.gitpod.io/v1/graphql";
+    "https://8080-egikarakash-skillmatrix-569hj558ywp.ws-eu54.gitpod.io/v1/graphql";
 
+  //Posting score, data and user_d
   const ADD_POST = gql`
-  mutation MyMutation(
-    $data: json
-    $score: Int!
-    $user_id: Int!
-  ) {
-    insert_User_Answers_one(
-      object: {
-        data: $data
-        score: $score
-        user_id: $user_id
+    mutation MyMutation($data: json, $score: Int!, $user_id: Int!) {
+      insert_User_Answers_one(
+        object: { data: $data, score: $score, user_id: $user_id }
+        on_conflict: {
+          constraint: User_answer_pkey
+          update_columns: score
+          where: { user_id: { _is_null: false } }
+        }
+      ) {
+        data
+        score
+        user_id
       }
-      on_conflict: {
-        constraint: User_answer_pkey
-        update_columns: score
-        where: { user_id: { _is_null: false } }
-      }
-    ) {
-      data
-      score
-      user_id
     }
-  }
   `;
 
-  console.log("props", parseInt(props?.decodeToken['https://hasura.io/jwt/claims']['x-hasura-user-id']));
+  console.log(
+    "props",
+    parseInt(
+      props?.decodeToken["https://hasura.io/jwt/claims"]["x-hasura-user-id"]
+    )
+  );
 
+  // Submiting Answer while Next button is clicked
   const submitAnswer = () => {
     handleNext();
     axios({
@@ -128,7 +130,11 @@ const Question = (props) => {
       },
       data: {
         variables: {
-          user_id: parseInt(props.decodeToken['https://hasura.io/jwt/claims']['x-hasura-user-id']),
+          user_id: parseInt(
+            props.decodeToken["https://hasura.io/jwt/claims"][
+              "x-hasura-user-id"
+            ]
+          ),
           score: score,
           data: [
             "Strongly Disagree",
@@ -143,7 +149,8 @@ const Question = (props) => {
     })
       .then((res) => {
         setScore(0);
-        console.log(res.data)})
+        console.log(res.data);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -154,7 +161,6 @@ const Question = (props) => {
   const maxLength = props?.questions?.data?.Questions?.length - 1;
 
   return (
-   
     <Box width={"400px"}>
       <Card className={classes.card}>
         <CardMedia
@@ -163,7 +169,8 @@ const Question = (props) => {
           image="https://source.unsplash.com/random"
           alt="unsplash image"
         />
- 
+
+
         <CardContent>
           <Container>
             <Typography gutterBottom variant="h5" component="div">
@@ -325,8 +332,10 @@ const Question = (props) => {
                   justifyContent: "space-evenly"
                 }}
               >
+                {/* Buttons Previous and Next */}
+
                 <Stack spacing={2} direction="row">
-                  {maxLength + 1 === index  ? (
+                  {maxLength + 1 === index ? (
                     ""
                   ) : (
                     <Button
@@ -355,12 +364,12 @@ const Question = (props) => {
           variant="body2"
           gutterBottom
         >
-
-         {index + 1} / {maxLength + 1}
-          
+          {index + 1} / {maxLength + 1}
         </Typography>
-       
-        <LinearProgress variant="determinate" value={(index)*10}>  </LinearProgress>
+
+        <LinearProgress variant="determinate" value={index * 10}>
+          {" "}
+        </LinearProgress>
       </Card>
     </Box>
   );

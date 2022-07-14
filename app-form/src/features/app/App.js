@@ -55,7 +55,7 @@ export const App = () => {
         : "loading time..."}
     </Page>} />
       <Route path="/fill" element={<Question decodeToken={decodeToken} questions={question} />} />
-      <Route path="/lastpage" element={<LastPage  />} />
+      <Route path="/lastpage" element={<LastPage decodeToken={decodeToken}  />} />
     </Routes>
   );
 };
