@@ -86,13 +86,13 @@ const Question = (props) => {
         setScore(0);
         break;
     }
-    console.log("score", score);
   };
+  console.log("score", score);
 
   const ADMIN_SECRET = "hasura";
 
   const BASE_URL =
-    "https://8080-egikarakash-skillmatrix-569hj558ywp.ws-eu54.gitpod.io/v1/graphql";
+    "https://8080-egikarakash-skillmatrix-6gavwp6ofrq.ws-eu54.gitpod.io/v1/graphql";
 
   //Posting score, data and user_d
   const ADD_POST = gql`

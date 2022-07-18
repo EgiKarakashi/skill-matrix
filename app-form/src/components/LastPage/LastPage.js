@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
-
 import { Card, CardMedia, CardContent } from "@mui/material";
 import { gql, useQuery } from "../../services/hasura-client";
 
@@ -13,13 +12,24 @@ const SCORE_ACTION_QUERY = gql`
   }
 `;
 
-
+const CALCULATE_TOTAL_SCORE_ACTION = gql`
+  query MyQuery($_eq: Int!) {
+    User_Answers_aggregate(where: { user_id: { _eq: $_eq } }) {
+      aggregate {
+        sum {
+          score
+        }
+      }
+    }
+  }
+`;
+let totalScore = 0;
 
 const LastPage = (props) => {
-
   //Getting the score from Hasura whith user_id based on the token
-  
+
   const [datas, setDatas] = useState([]);
+
   const { isLoading, data } = useQuery("ScoreAction", SCORE_ACTION_QUERY, {
     variables: {
       _eq: parseInt(
@@ -34,9 +44,18 @@ const LastPage = (props) => {
 
   console.log("something", datas);
 
+  {datas?.map((eachData) => (
+    
+          totalScore = totalScore + eachData.score
+        ))}
+
   return (
     <Card sx={{ maxWidth: 800 }}>
-      <CardMedia component="img" height="450" width="800" />
+      <Typography gutterBottom variant="h5" component="div" align="center">
+        You have: {totalScore} points 
+      </Typography>
+
+
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" align="center">
           Congratulations!!!
@@ -48,5 +67,7 @@ const LastPage = (props) => {
     </Card>
   );
 };
+
+
 
 export default LastPage;
