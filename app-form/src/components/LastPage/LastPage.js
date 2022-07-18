@@ -45,13 +45,13 @@ const LastPage = (props) => {
   console.log("something", datas);
 
   {datas?.map((eachData) => (
-    
+
           totalScore = totalScore + eachData.score
         ))}
 
   return (
-    <Card sx={{ maxWidth: 800 }}>
-      <Typography gutterBottom variant="h5" component="div" align="center">
+    <Card  sx={{ minHeight: 500 , minWidth: 500}}>
+      <Typography gutterBottom variant="h5" component="div" align="center" marginTop={20}>
         You have: {totalScore} points 
       </Typography>
 
